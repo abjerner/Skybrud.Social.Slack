@@ -1,12 +1,13 @@
-﻿using Skybrud.Social.Json;
+﻿using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json;
 
 namespace Skybrud.Social.Slack.Objects {
     
-    public class SlackObject : SocialJsonObject {
+    public class SlackObject : JsonObjectBase {
 
         #region Constructors
 
-        protected SlackObject(JsonObject obj) : base(obj) { }
+        protected SlackObject(JObject obj) : base(obj) { }
 
         #endregion
 

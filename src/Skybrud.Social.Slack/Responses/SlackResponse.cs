@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Net;
+using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json;
+using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Http;
-using Skybrud.Social.Json;
 using Skybrud.Social.Slack.Exceptions;
 using Skybrud.Social.Slack.Objects;
 
@@ -30,7 +32,7 @@ namespace Skybrud.Social.Slack.Responses {
             // the "ok" property in the boolean instead
 
             // Get root object
-            JsonObject obj = response.GetBodyAsJsonObject();
+            JObject obj = JsonUtils.ParseJsonObject(response.Body);
 
             // Is the request/response successful?
             bool isOk = obj.GetBoolean("ok");

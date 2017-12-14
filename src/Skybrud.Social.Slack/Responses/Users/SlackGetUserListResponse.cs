@@ -1,6 +1,5 @@
 ﻿using System;
 using Skybrud.Social.Http;
-using Skybrud.Social.Json;
 using Skybrud.Social.Slack.Objects.Users;
 
 namespace Skybrud.Social.Slack.Responses.Users {
@@ -30,7 +29,7 @@ namespace Skybrud.Social.Slack.Responses.Users {
 
             // Initialize the response object
             return new SlackGetUserListResponse(response) {
-                Body = JsonObject.ParseJson(response.Body, SlackUsersResponseBody.Parse)
+                Body = ParseJsonObject(response.Body, SlackUsersResponseBody.Parse)
             };
 
         }

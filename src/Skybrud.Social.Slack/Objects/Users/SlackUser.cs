@@ -1,5 +1,6 @@
 ﻿using System;
-using Skybrud.Social.Json;
+using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Slack.Enums;
 
 namespace Skybrud.Social.Slack.Objects.Users {
@@ -54,17 +55,17 @@ namespace Skybrud.Social.Slack.Objects.Users {
 
         #region Constructors
 
-        private SlackUser(JsonObject obj) : base(obj) { }
+        private SlackUser(JObject obj) : base(obj) { }
 
         #endregion
 
         #region Static methods
 
         /// <summary>
-        /// Gets an instance of <code>SlackUser</code> from the specified <code>JsonObject</code>.
+        /// Gets an instance of <code>SlackUser</code> from the specified <code>JObject</code>.
         /// </summary>
-        /// <param name="obj">The instance of <code>JsonObject</code> to parse.</param>
-        public static SlackUser Parse(JsonObject obj) {
+        /// <param name="obj">The instance of <code>JObject</code> to parse.</param>
+        public static SlackUser Parse(JObject obj) {
             if (obj == null) return null;
             return new SlackUser(obj) {
                 Id = obj.GetString("id"),

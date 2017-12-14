@@ -1,4 +1,5 @@
-﻿using Skybrud.Social.Json;
+﻿using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.Slack.Objects.Authentication {
     
@@ -20,17 +21,17 @@ namespace Skybrud.Social.Slack.Objects.Authentication {
 
         #region Constructors
 
-        private SlackAuthenticationTest(JsonObject obj) : base(obj) { }
+        private SlackAuthenticationTest(JObject obj) : base(obj) { }
 
         #endregion
 
         #region Static methods
 
         /// <summary>
-        /// Gets an instance of <code>SlackAuthenticationTest</code> from the specified <code>JsonObject</code>.
+        /// Gets an instance of <code>SlackAuthenticationTest</code> from the specified <code>JObject</code>.
         /// </summary>
         /// <param name="obj">The instance of <code>JsonObject</code> to parse.</param>
-        public static SlackAuthenticationTest Parse(JsonObject obj) {
+        public static SlackAuthenticationTest Parse(JObject obj) {
             if (obj == null) return null;
             return new SlackAuthenticationTest(obj) {
                 Url = obj.GetString("url"),

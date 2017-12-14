@@ -1,6 +1,5 @@
 ﻿using System;
 using Skybrud.Social.Http;
-using Skybrud.Social.Json;
 using Skybrud.Social.Slack.Objects.Authentication;
 
 namespace Skybrud.Social.Slack.Responses.Authentication {
@@ -33,7 +32,7 @@ namespace Skybrud.Social.Slack.Responses.Authentication {
 
             // Initialize the response object
             return new SlackTokenResponse(response) {
-                Body = JsonObject.ParseJson(response.Body, SlackTokenInfo.Parse)
+                Body = ParseJsonObject(response.Body, SlackTokenInfo.Parse)
             };
 
         }

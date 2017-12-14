@@ -1,4 +1,5 @@
-﻿using Skybrud.Social.Json;
+﻿using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.Slack.Objects {
     
@@ -15,7 +16,7 @@ namespace Skybrud.Social.Slack.Objects {
 
         #region Constructors
 
-        protected SlackRootObject(JsonObject obj) : base(obj) {
+        protected SlackRootObject(JObject obj) : base(obj) {
             IsOk = obj.GetBoolean("ok");
         }
 
