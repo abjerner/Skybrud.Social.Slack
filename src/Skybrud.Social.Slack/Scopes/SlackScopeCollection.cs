@@ -20,16 +20,12 @@ namespace Skybrud.Social.Slack.Scopes {
         /// <summary>
         /// Gets an array of all the scopes added to the collection.
         /// </summary>
-        public SlackScope[] Items {
-            get { return _list.ToArray(); }
-        }
+        public SlackScope[] Items => _list.ToArray();
 
         /// <summary>
         /// Gets the amounts of scopes added to the collection.
         /// </summary>
-        public int Count {
-            get { return _list.Count; }
-        }
+        public int Count => _list.Count;
 
         #endregion
 

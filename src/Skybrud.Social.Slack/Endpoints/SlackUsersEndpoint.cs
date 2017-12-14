@@ -18,9 +18,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// <summary>
         /// A reference to the raw endpoint.
         /// </summary>
-        public SlackUsersRawEndpoint Raw {
-            get { return Service.Client.Users; }
-        }
+        public SlackUsersRawEndpoint Raw => Service.Client.Users;
 
         #endregion
 

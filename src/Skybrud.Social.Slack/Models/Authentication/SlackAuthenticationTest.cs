@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
-namespace Skybrud.Social.Slack.Objects.Authentication {
+namespace Skybrud.Social.Slack.Models.Authentication {
     
     public class SlackAuthenticationTest : SlackObject {
 

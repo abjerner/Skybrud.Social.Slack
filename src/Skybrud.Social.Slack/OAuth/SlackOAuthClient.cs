@@ -44,12 +44,12 @@ namespace Skybrud.Social.Slack.OAuth {
         /// <summary>
         /// Gets a reference to the raw authentication endpoint.
         /// </summary>
-        public SlackAuthenticationRawEndpoint Authentication { get; private set; }
+        public SlackAuthenticationRawEndpoint Authentication { get; }
 
         /// <summary>
         /// Gets a reference to the raw users endpoint.
         /// </summary>
-        public SlackUsersRawEndpoint Users { get; private set; }
+        public SlackUsersRawEndpoint Users { get; }
 
         #endregion
 
@@ -127,12 +127,7 @@ namespace Skybrud.Social.Slack.OAuth {
         /// </summary>
         /// <param name="state">A unique state for the request.</param>
         public string GetAuthorizationUrl(string state) {
-            return String.Format(
-                "https://slack.com/oauth/authorize?client_id={0}&redirect_uri={1}&state={2}",
-                StringUtils.UrlEncode(ClientId),
-                StringUtils.UrlEncode(RedirectUri),
-                StringUtils.UrlEncode(state)
-            );
+            return $"https://slack.com/oauth/authorize?client_id={StringUtils.UrlEncode(ClientId)}&redirect_uri={StringUtils.UrlEncode(RedirectUri)}&state={StringUtils.UrlEncode(state)}";
         }
 
         protected override void PrepareHttpRequest(SocialHttpRequest request) {
@@ -154,8 +149,8 @@ namespace Skybrud.Social.Slack.OAuth {
         /// <param name="state">A unique state for the request.</param>
         /// <param name="scope">The scope of the application.</param>
         public string GetAuthorizationUrl(string state, SlackScopeCollection scope) {
-            if (String.IsNullOrWhiteSpace(state)) throw new ArgumentNullException("state");
-            if (scope == null) throw new ArgumentNullException("scope");
+            if (String.IsNullOrWhiteSpace(state)) throw new ArgumentNullException(nameof(state));
+            if (scope == null) throw new ArgumentNullException(nameof(scope));
             return String.Format(
                 "https://slack.com/oauth/authorize?client_id={0}&redirect_uri={1}&state={2}&scope={3}",
                 StringUtils.UrlEncode(ClientId),

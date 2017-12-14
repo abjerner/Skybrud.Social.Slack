@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
-namespace Skybrud.Social.Slack.Objects.Users {
+namespace Skybrud.Social.Slack.Models.Users {
     
     public class SlackUserProfile : SlackObject {
 
@@ -76,23 +76,17 @@ namespace Skybrud.Social.Slack.Objects.Users {
         /// <summary>
         /// Gets whether the user has specified a job title.
         /// </summary>
-        public bool HasTitle {
-            get { return !String.IsNullOrWhiteSpace(Title); }
-        }
+        public bool HasTitle => !String.IsNullOrWhiteSpace(Title);
 
         /// <summary>
         /// Gets whether the user has specified a Skype name.
         /// </summary>
-        public bool HasSkype {
-            get { return !String.IsNullOrWhiteSpace(Skype); }
-        }
+        public bool HasSkype => !String.IsNullOrWhiteSpace(Skype);
 
         /// <summary>
         /// Gets whether the user has specified a phone number.
         /// </summary>
-        public bool HasPhone {
-            get { return !String.IsNullOrWhiteSpace(Phone); }
-        }
+        public bool HasPhone => !String.IsNullOrWhiteSpace(Phone);
 
         #endregion
 

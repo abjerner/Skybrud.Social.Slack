@@ -1,6 +1,6 @@
 ﻿using System;
 using Skybrud.Social.Http;
-using Skybrud.Social.Slack.Objects.Users;
+using Skybrud.Social.Slack.Models.Users;
 
 namespace Skybrud.Social.Slack.Responses.Users {
 
@@ -22,7 +22,7 @@ namespace Skybrud.Social.Slack.Responses.Users {
         public static SlackGetUserListResponse ParseResponse(SocialHttpResponse response) {
 
             // Some input validation
-            if (response == null) throw new ArgumentNullException("response");
+            if (response == null) throw new ArgumentNullException(nameof(response));
 
             // Validate the response
             ValidateResponse(response);

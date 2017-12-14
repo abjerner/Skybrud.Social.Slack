@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
-namespace Skybrud.Social.Slack.Objects {
+namespace Skybrud.Social.Slack.Models {
     
     public class SlackRootObject : SlackObject {
 

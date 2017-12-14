@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Slack.Scopes;
 
-namespace Skybrud.Social.Slack.Objects.Authentication {
+namespace Skybrud.Social.Slack.Models.Authentication {
     
     /// <summary>
     /// Class representing the response body of a call to get an access token.

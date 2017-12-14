@@ -82,8 +82,8 @@ namespace Skybrud.Social.Slack.Scopes {
         /// </summary>
         /// <param name="scope">The scope to be registered.</param>
         public static SlackScope RegisterScope(SlackScope scope) {
-            if (scope == null) throw new ArgumentNullException("scope");
-            if (Lookup.ContainsKey(scope.Name)) throw new ArgumentException("A scope with the specified name has already been registered.", "scope");
+            if (scope == null) throw new ArgumentNullException(nameof(scope));
+            if (Lookup.ContainsKey(scope.Name)) throw new ArgumentException("A scope with the specified name has already been registered.", nameof(scope));
             Lookup.Add(scope.Name, scope);
             return scope;
         }
@@ -102,7 +102,7 @@ namespace Skybrud.Social.Slack.Scopes {
         /// <param name="name">The name of the scope.</param>
         /// <param name="description">The description of the scope.</param>
         public static SlackScope RegisterScope(string name, string description) {
-            if (Lookup.ContainsKey(name)) throw new ArgumentException("A scope with the specified name \"" + name + "\" has already been registered.", "name");
+            if (Lookup.ContainsKey(name)) throw new ArgumentException("A scope with the specified name \"" + name + "\" has already been registered.", nameof(name));
             SlackScope scope = new SlackScope(name, description);
             Lookup.Add(scope.Name, scope);
             return scope;

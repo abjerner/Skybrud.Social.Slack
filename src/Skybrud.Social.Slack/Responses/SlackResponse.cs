@@ -1,11 +1,9 @@
-﻿using System;
-using System.Net;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Http;
 using Skybrud.Social.Slack.Exceptions;
-using Skybrud.Social.Slack.Objects;
+using Skybrud.Social.Slack.Models;
 
 namespace Skybrud.Social.Slack.Responses {
 

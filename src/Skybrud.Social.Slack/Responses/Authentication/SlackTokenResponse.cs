@@ -1,6 +1,6 @@
 ﻿using System;
 using Skybrud.Social.Http;
-using Skybrud.Social.Slack.Objects.Authentication;
+using Skybrud.Social.Slack.Models.Authentication;
 
 namespace Skybrud.Social.Slack.Responses.Authentication {
 
@@ -25,7 +25,7 @@ namespace Skybrud.Social.Slack.Responses.Authentication {
         public static SlackTokenResponse ParseResponse(SocialHttpResponse response) {
 
             // Some input validation
-            if (response == null) throw new ArgumentNullException("response");
+            if (response == null) throw new ArgumentNullException(nameof(response));
             
             // Validate the response
             ValidateResponse(response);
