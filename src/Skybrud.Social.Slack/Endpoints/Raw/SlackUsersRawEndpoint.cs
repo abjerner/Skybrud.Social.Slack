@@ -35,7 +35,7 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         ///     <cref>https://api.slack.com/methods/users.info</cref>
         /// </see>
         public SocialHttpResponse GetInfo(string userId) {
-            return Client.DoAuthenticatedGetRequest("https://slack.com/api/users.info?user=" + userId);
+            return Client.DoHttpGetRequest("https://slack.com/api/users.info?user=" + userId);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         ///     <cref>https://api.slack.com/methods/users.list</cref>
         /// </see>
         public SocialHttpResponse GetList() {
-            return Client.DoAuthenticatedGetRequest("https://slack.com/api/users.list");
+            return Client.DoHttpGetRequest("https://slack.com/api/users.list");
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         ///     <cref>https://api.slack.com/methods/users.list</cref>
         /// </see>
         public SocialHttpResponse GetList(bool presence) {
-            return Client.DoAuthenticatedGetRequest("https://slack.com/api/users.list" + (presence ? "?presence=1" : ""));
+            return Client.DoHttpGetRequest("https://slack.com/api/users.list" + (presence ? "?presence=1" : ""));
         }
 
         #endregion

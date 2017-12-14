@@ -2,7 +2,6 @@
 using System.Collections.Specialized;
 using Skybrud.Essentials.Strings;
 using Skybrud.Social.Http;
-using Skybrud.Social.Interfaces.Http;
 using Skybrud.Social.Slack.Endpoints.Raw;
 using Skybrud.Social.Slack.Responses.Authentication;
 using Skybrud.Social.Slack.Scopes;
@@ -12,7 +11,7 @@ namespace Skybrud.Social.Slack.OAuth {
     /// <summary>
     /// Class for handling the raw communication with the Slack API as well as any OAuth 2.0 communication.
     /// </summary>
-    public class SlackOAuthClient {
+    public class SlackOAuthClient : SocialHttpClient {
 
         #region Properties
 
@@ -136,6 +135,18 @@ namespace Skybrud.Social.Slack.OAuth {
             );
         }
 
+        protected override void PrepareHttpRequest(SocialHttpRequest request) {
+            
+            request.QueryString = request.QueryString ?? new SocialHttpQueryString();
+            
+            // Append the access token to the query string if present in the client and not already
+            // specified in the query string
+            if (!request.QueryString.ContainsKey("token") && !String.IsNullOrWhiteSpace(AccessToken)) {
+                request.QueryString.Add("token", AccessToken);
+            }
+
+        }
+
         /// <summary>
         /// Gets an authorization URL using the specified <code>state</code>. This URL will only make your application
         /// request a basic scope.
@@ -176,43 +187,7 @@ namespace Skybrud.Social.Slack.OAuth {
             return SlackTokenResponse.ParseResponse(response);
 
         }
-
-        /// <summary>
-        /// Makes an authenticated GET request to the specified URL. The access token is automatically appended to the query string.
-        /// </summary>
-        /// <param name="url">The URL to call.</param>
-        public SocialHttpResponse DoAuthenticatedGetRequest(string url) {
-            return DoAuthenticatedGetRequest(url, default(SocialHttpQueryString));
-        }
-
-        /// <summary>
-        /// Makes an authenticated GET request to the specified URL. The access token is automatically appended to the query string.
-        /// </summary>
-        /// <param name="url">The URL to call.</param>
-        /// <param name="query">The query string for the call.</param>
-        public SocialHttpResponse DoAuthenticatedGetRequest(string url, IHttpQueryString query) {
-
-            // Initialize a new NameValueCollection if NULL
-            if (query == null) query = new SocialHttpQueryString();
-
-            // Append the access token to the query string if present in the client and not already
-            // specified in the query string
-            if (!query.ContainsKey("token") && !String.IsNullOrWhiteSpace(AccessToken)) {
-                query.Add("token", AccessToken);
-            }
-
-            // Configure the request
-            SocialHttpRequest request = new SocialHttpRequest {
-                Method = SocialHttpMethod.Get,
-                Url = url,
-                QueryString = query,
-                UserAgent = "Skybrud.Social"
-            };
-
-            // Make a call to the API
-            return request.GetResponse();
-
-        }
+        
 
         #endregion
 

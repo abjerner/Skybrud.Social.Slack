@@ -31,7 +31,7 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         /// Checks authentication and tells you who you are.
         /// </summary>
         public SocialHttpResponse GetTest() {
-            return Client.DoAuthenticatedGetRequest("https://slack.com/api/auth.test");
+            return Client.DoHttpGetRequest("https://slack.com/api/auth.test");
         }
 
         #endregion
