@@ -1,4 +1,4 @@
-﻿namespace Skybrud.Social.Slack.Enums {
+﻿namespace Skybrud.Social.Slack.Models.Users {
     
     public enum SlackPresence {
 

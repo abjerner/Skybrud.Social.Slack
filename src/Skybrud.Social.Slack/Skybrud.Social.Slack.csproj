@@ -50,11 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Endpoints\Raw\SlackAuthenticationRawEndpoint.cs" />
+    <Compile Include="Endpoints\Raw\SlackChatRawEndpoint.cs" />
     <Compile Include="Endpoints\Raw\SlackUsersRawEndpoint.cs" />
     <Compile Include="Endpoints\SlackAuthenticationEndpoint.cs" />
     <Compile Include="Endpoints\SlackUsersEndpoint.cs" />
-    <Compile Include="Enums\SlackPresence.cs" />
-    <Compile Include="Exceptions\SlackException.cs" />
+    <Compile Include="Models\Users\SlackPresence.cs" />
+    <Compile Include="Exceptions\SlackHttpException.cs" />
     <Compile Include="OAuth\SlackOAuthClient.cs" />
     <Compile Include="Models\Authentication\SlackAuthenticationTest.cs" />
     <Compile Include="Models\Authentication\SlackTokenInfo.cs" />
@@ -64,6 +65,9 @@
     <Compile Include="Models\Users\SlackUserProfile.cs" />
     <Compile Include="Models\Users\SlackUserResponseBody.cs" />
     <Compile Include="Models\Users\SlackUsersResponseBody.cs" />
+    <Compile Include="Options\Chat\SlackMessageAttachmentField.cs" />
+    <Compile Include="Options\Chat\SlackMessageAttachment.cs" />
+    <Compile Include="Options\Chat\SlackPostMessageOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\AssemblyInfoGenerated.cs" />
     <Compile Include="Responses\Authentication\SlackAuthenticationTestResponse.cs" />
@@ -75,6 +79,8 @@
     <Compile Include="Scopes\SlackScopeCollection.cs" />
     <Compile Include="Scopes\SlackScopes.cs" />
     <Compile Include="SlackService.cs" />
+    <Compile Include="SlackUtils.cs" />
+    <Compile Include="SlackWebhookClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

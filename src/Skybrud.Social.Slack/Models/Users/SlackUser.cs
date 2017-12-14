@@ -1,7 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
-using Skybrud.Social.Slack.Enums;
 
 namespace Skybrud.Social.Slack.Models.Users {
     

@@ -36,7 +36,7 @@ namespace Skybrud.Social.Slack.Responses {
             bool isOk = obj.GetBoolean("ok");
                 
             // Now throw some exceptions
-            if (!isOk) throw new SlackException(response, obj.GetString("error"));
+            if (!isOk) throw new SlackHttpException(response, obj.GetString("error"));
 
         }
 
