@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Json;
 using Skybrud.Essentials.Json.Extensions;
-using Skybrud.Social.Http;
 using Skybrud.Social.Slack.Exceptions;
 using Skybrud.Social.Slack.Models;
 
@@ -10,11 +10,11 @@ namespace Skybrud.Social.Slack.Responses {
     /// <summary>
     /// Class representing a response from the Slack API.
     /// </summary>
-    public abstract class SlackResponse : SocialResponse {
+    public abstract class SlackResponse : HttpResponseBase {
 
         #region Constructor
 
-        protected SlackResponse(SocialHttpResponse response) : base(response) { }
+        protected SlackResponse(IHttpResponse response) : base(response) { }
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace Skybrud.Social.Slack.Responses {
         /// Validates the specified <code>response</code>.
         /// </summary>
         /// <param name="response">The response to be validated.</param>
-        public static void ValidateResponse(SocialHttpResponse response) {
+        public static void ValidateResponse(IHttpResponse response) {
 
             // The Slack API will always return a "200 OK" status even when an error is returned, so we need to check
             // the "ok" property in the boolean instead
@@ -60,7 +60,7 @@ namespace Skybrud.Social.Slack.Responses {
 
         #region Constructors
 
-        protected SlackResponse(SocialHttpResponse response) : base(response) { }
+        protected SlackResponse(IHttpResponse response) : base(response) { }
 
         #endregion
 

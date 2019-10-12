@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Common;
-using Skybrud.Social.Http;
-using Skybrud.Social.Interfaces.Http;
+using Skybrud.Essentials.Http.Collections;
+using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Social.Slack.Options.Chat {
 
@@ -37,12 +37,12 @@ namespace Skybrud.Social.Slack.Options.Chat {
         }
 
         public IHttpQueryString GetQueryString() {
-            return new SocialHttpQueryString();
+            return new HttpQueryString();
         }
 
         public IHttpPostData GetPostData() {
             
-            SocialHttpPostData data = new SocialHttpPostData();
+            IHttpPostData data = new HttpPostData();
 
             if (String.IsNullOrWhiteSpace(Channel)) throw new PropertyNotSetException(nameof(Channel));
             if (String.IsNullOrWhiteSpace(Text)) throw new PropertyNotSetException(nameof(Text));

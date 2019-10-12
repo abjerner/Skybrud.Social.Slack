@@ -1,4 +1,4 @@
-﻿using Skybrud.Social.Http;
+﻿using Skybrud.Essentials.Http;
 using Skybrud.Social.Slack.OAuth;
 
 namespace Skybrud.Social.Slack.Endpoints.Raw {
@@ -30,8 +30,8 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         /// <summary>
         /// Checks authentication and tells you who you are.
         /// </summary>
-        public SocialHttpResponse GetTest() {
-            return Client.DoHttpGetRequest("https://slack.com/api/auth.test");
+        public IHttpResponse GetTest() {
+            return Client.Get("https://slack.com/api/auth.test");
         }
 
         #endregion

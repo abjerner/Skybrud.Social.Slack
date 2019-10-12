@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Specialized;
+using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Client;
+using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Strings;
-using Skybrud.Social.Http;
 using Skybrud.Social.Slack.Endpoints.Raw;
 using Skybrud.Social.Slack.Responses.Authentication;
 using Skybrud.Social.Slack.Scopes;
@@ -11,7 +13,7 @@ namespace Skybrud.Social.Slack.OAuth {
     /// <summary>
     /// Class for handling the raw communication with the Slack API as well as any OAuth 2.0 communication.
     /// </summary>
-    public class SlackOAuthClient : SocialHttpClient {
+    public class SlackOAuthClient : HttpClient {
 
         #region Properties
 
@@ -130,9 +132,9 @@ namespace Skybrud.Social.Slack.OAuth {
             return $"https://slack.com/oauth/authorize?client_id={StringUtils.UrlEncode(ClientId)}&redirect_uri={StringUtils.UrlEncode(RedirectUri)}&state={StringUtils.UrlEncode(state)}";
         }
 
-        protected override void PrepareHttpRequest(SocialHttpRequest request) {
+        protected override void PrepareHttpRequest(IHttpRequest request) {
             
-            request.QueryString = request.QueryString ?? new SocialHttpQueryString();
+            request.QueryString = request.QueryString ?? new HttpQueryString();
             
             // Append the access token to the query string if present in the client and not already
             // specified in the query string
@@ -176,7 +178,7 @@ namespace Skybrud.Social.Slack.OAuth {
             };
 
             // Make the call to the API
-            SocialHttpResponse response = SocialUtils.Http.DoHttpPostRequest("https://slack.com/api/oauth.access", null, parameters);
+            IHttpResponse response = HttpUtils.Requests.Post("https://slack.com/api/oauth.access", null, parameters);
 
             // Parse the response
             return SlackTokenResponse.ParseResponse(response);

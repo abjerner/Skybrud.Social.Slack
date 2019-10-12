@@ -1,21 +1,21 @@
 ﻿using System;
 using Newtonsoft.Json;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
 using Skybrud.Social.Slack.Options.Chat;
 
 namespace Skybrud.Social.Slack {
 
     public static class SlackUtils {
 
-        public static SocialHttpResponse PostMessage(string webhookUrl, SlackPostMessageOptions options) {
+        public static IHttpResponse PostMessage(string webhookUrl, SlackPostMessageOptions options) {
 
             if (String.IsNullOrWhiteSpace(webhookUrl)) throw new ArgumentNullException(nameof(webhookUrl));
             if (options == null) throw new ArgumentNullException(nameof(options));
 
             // Initialize the request
-            SocialHttpRequest request = new SocialHttpRequest {
+            HttpRequest request = new HttpRequest {
                 Url = webhookUrl,
-                Method = SocialHttpMethod.Post,
+                Method = HttpMethod.Post,
                 ContentType = "application/x-www-form-urlencoded"
             };
             

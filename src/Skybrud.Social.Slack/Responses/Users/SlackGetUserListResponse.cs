@@ -1,5 +1,5 @@
 ﻿using System;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
 using Skybrud.Social.Slack.Models.Users;
 
 namespace Skybrud.Social.Slack.Responses.Users {
@@ -8,7 +8,7 @@ namespace Skybrud.Social.Slack.Responses.Users {
 
         #region Constructors
 
-        private SlackGetUserListResponse(SocialHttpResponse response) : base(response) { }
+        private SlackGetUserListResponse(IHttpResponse response) : base(response) { }
 
         #endregion
 
@@ -19,7 +19,7 @@ namespace Skybrud.Social.Slack.Responses.Users {
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
         /// <returns>Returns an instance of <code>WindowsLiveUserResponse</code>.</returns>
-        public static SlackGetUserListResponse ParseResponse(SocialHttpResponse response) {
+        public static SlackGetUserListResponse ParseResponse(IHttpResponse response) {
 
             // Some input validation
             if (response == null) throw new ArgumentNullException(nameof(response));

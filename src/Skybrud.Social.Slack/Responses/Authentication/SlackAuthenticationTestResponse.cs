@@ -1,6 +1,5 @@
 ﻿using System;
-using Skybrud.Essentials.Json;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
 using Skybrud.Social.Slack.Models.Authentication;
 
 namespace Skybrud.Social.Slack.Responses.Authentication {
@@ -9,7 +8,7 @@ namespace Skybrud.Social.Slack.Responses.Authentication {
 
         #region Constructors
 
-        private SlackAuthenticationTestResponse(SocialHttpResponse response) : base(response) { }
+        private SlackAuthenticationTestResponse(IHttpResponse response) : base(response) { }
 
         #endregion
 
@@ -20,7 +19,7 @@ namespace Skybrud.Social.Slack.Responses.Authentication {
         /// </summary>
         /// <param name="response">The response to be parsed.</param>
         /// <returns>Returns an instance of <code>WindowsLiveUserResponse</code>.</returns>
-        public static SlackAuthenticationTestResponse ParseResponse(SocialHttpResponse response) {
+        public static SlackAuthenticationTestResponse ParseResponse(IHttpResponse response) {
 
             // Some input validation
             if (response == null) throw new ArgumentNullException(nameof(response));

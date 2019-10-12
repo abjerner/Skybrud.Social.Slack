@@ -1,5 +1,5 @@
 using System;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
 
 namespace Skybrud.Social.Slack.Exceptions {
 
@@ -11,9 +11,9 @@ namespace Skybrud.Social.Slack.Exceptions {
         #region Properties
 
         /// <summary>
-        /// Gets a reference to the underlying <see cref="SocialHttpResponse"/>.
+        /// Gets a reference to the underlying <see cref="IHttpResponse"/>.
         /// </summary>
-        public SocialHttpResponse Response { get; private set; }
+        public IHttpResponse Response { get; private set; }
 
         /// <summary>
         /// Gets the error returned by the Slack API.
@@ -29,7 +29,7 @@ namespace Skybrud.Social.Slack.Exceptions {
         /// </summary>
         /// <param name="response">The response.</param>
         /// <param name="error">The error.</param>
-        public SlackHttpException(SocialHttpResponse response, string error) : base("Invalid response received from the Slack API: " + error) {
+        public SlackHttpException(IHttpResponse response, string error) : base("Invalid response received from the Slack API: " + error) {
             Response = response;
             Error = error;
         }

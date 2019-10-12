@@ -1,5 +1,5 @@
 ﻿using System;
-using Skybrud.Social.Http;
+using Skybrud.Essentials.Http;
 using Skybrud.Social.Slack.Options.Chat;
 
 namespace Skybrud.Social.Slack {
@@ -22,8 +22,7 @@ namespace Skybrud.Social.Slack {
 
         #region Member methods
 
-        
-        public SocialHttpResponse PostMessage(SlackPostMessageOptions options) {
+        public IHttpResponse PostMessage(SlackPostMessageOptions options) {
             if (options == null) throw new ArgumentNullException(nameof(options));
             return SlackUtils.PostMessage(WebhookUrl, options);
         }

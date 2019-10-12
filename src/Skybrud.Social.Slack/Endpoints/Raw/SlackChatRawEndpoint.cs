@@ -12,7 +12,7 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         /// <summary>
         /// Gets a reference to the parent OAuth client.
         /// </summary>
-        public SlackOAuthClient Client { get; private set; }
+        public SlackOAuthClient Client { get; }
 
         #endregion
 
