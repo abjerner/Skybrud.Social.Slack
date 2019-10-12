@@ -1,104 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4C00CE12-558C-47A7-B804-B3448DF002C3}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworks>netstandard1.3;net45;net46;net47</TargetFrameworks>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <RunBuildTargets>true</RunBuildTargets>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <RootNamespace>Skybrud.Social.Slack</RootNamespace>
-    <AssemblyName>Skybrud.Social.Slack</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <Version>1.0.0-beta001</Version>
+    <Company>Skybrud.dk a/s</Company>
+    <Product>Skybrud.Social</Product>
+    <Authors>Anders Bjerner</Authors>
+    <Copyright>Copyright © 2019</Copyright>
+    <Description>Authentication and service implementation for the Slack API.</Description>
+    <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Slack</RepositoryUrl>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Skybrud.Essentials, Version=1.1.16.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Skybrud.Essentials.1.1.16\lib\net45\Skybrud.Essentials.dll</HintPath>
-    </Reference>
-    <Reference Include="Skybrud.Essentials.Http, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Skybrud.Essentials.Http.1.0.8\lib\net45\Skybrud.Essentials.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Endpoints\Raw\SlackAuthenticationRawEndpoint.cs" />
-    <Compile Include="Endpoints\Raw\SlackChatRawEndpoint.cs" />
-    <Compile Include="Endpoints\Raw\SlackUsersRawEndpoint.cs" />
-    <Compile Include="Endpoints\SlackAuthenticationEndpoint.cs" />
-    <Compile Include="Endpoints\SlackUsersEndpoint.cs" />
-    <Compile Include="Models\Users\SlackPresence.cs" />
-    <Compile Include="Exceptions\SlackHttpException.cs" />
-    <Compile Include="OAuth\SlackOAuthClient.cs" />
-    <Compile Include="Models\Authentication\SlackAuthenticationTest.cs" />
-    <Compile Include="Models\Authentication\SlackTokenInfo.cs" />
-    <Compile Include="Models\SlackObject.cs" />
-    <Compile Include="Models\SlackRootObject.cs" />
-    <Compile Include="Models\Users\SlackUser.cs" />
-    <Compile Include="Models\Users\SlackUserProfile.cs" />
-    <Compile Include="Models\Users\SlackUserResponseBody.cs" />
-    <Compile Include="Models\Users\SlackUsersResponseBody.cs" />
-    <Compile Include="Options\Chat\SlackMessageAttachmentField.cs" />
-    <Compile Include="Options\Chat\SlackMessageAttachment.cs" />
-    <Compile Include="Options\Chat\SlackPostMessageOptions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\AssemblyInfoGenerated.cs" />
-    <Compile Include="Responses\Authentication\SlackAuthenticationTestResponse.cs" />
-    <Compile Include="Responses\Authentication\SlackTokenResponse.cs" />
-    <Compile Include="Responses\SlackResponse.cs" />
-    <Compile Include="Responses\Users\SlackGetUserInfoResponse.cs" />
-    <Compile Include="Responses\Users\SlackGetUserListResponse.cs" />
-    <Compile Include="Scopes\SlackScope.cs" />
-    <Compile Include="Scopes\SlackScopeCollection.cs" />
-    <Compile Include="Scopes\SlackScopes.cs" />
-    <Compile Include="SlackService.cs" />
-    <Compile Include="SlackUtils.cs" />
-    <Compile Include="SlackWebhookClient.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="Properties\AssemblyInfo.json" />
-    <None Include="Skybrud.Social.Slack.nuspec" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  
   <PropertyGroup>
-    <PreBuildEvent>"$(SolutionDir)build\Skybrud.Social.PreBuildTool.exe" 2015-09-12 "$(ProjectPath)"</PreBuildEvent>
+    <PackageTags>Slack, Skybrud, Social, OAuth, JSON, Webhook</PackageTags>
+    <PackageLicenseUrl>https://github.com/abjerner/Skybrud.Social.Slack/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/abjerner/Skybrud.Social.Slack</PackageProjectUrl>
+    <PackageIconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</PackageIconUrl>
   </PropertyGroup>
-  <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)build\UpdateAssemblyInfoJson.exe" "$(ProjectPath)" "$(TargetPath)"</PostBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+
+  <ItemGroup>
+    <PackageReference Include="Skybrud.Essentials" Version="1.1.16" />
+    <PackageReference Include="Skybrud.Essentials.Http" Version="1.0.8" />
+  </ItemGroup>
+
+  <!--<PropertyGroup>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Skybrud.Social.Slack.xml</DocumentationFile>
+  </PropertyGroup>-->
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(TargetFramework)|$(RunBuildTargets)'=='netstandard1.3|true'">
+    <Exec Command="&quot;$(SolutionDir)build/Skybrud.Social.PreBuildTool.exe&quot; /date=2015-09-12 /projectPath=&quot;$(ProjectPath)&quot;" />
   </Target>
-  <Target Name="AfterBuild">
+
+  <Target Name="PostBuild" BeforeTargets="PostBuildEvent" Condition="'$(TargetFramework)|$(RunBuildTargets)'=='net46|true'">
+    <Exec Command="&quot;$(SolutionDir)build\UpdateAssemblyInfoJson.exe&quot; &quot;$(ProjectPath)&quot; &quot;$(TargetPath)&quot;" />
   </Target>
-  -->
+
 </Project>

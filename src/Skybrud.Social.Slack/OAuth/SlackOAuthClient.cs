@@ -170,7 +170,7 @@ namespace Skybrud.Social.Slack.OAuth {
         public SlackTokenResponse GetAccessTokenFromAuthCode(string authCode) {
 
             // Initialize collection with POST data
-            NameValueCollection parameters = new NameValueCollection {
+            IHttpPostData parameters = new HttpPostData {
                 {"client_id", ClientId},
                 {"client_secret", ClientSecret},
                 {"redirect_uri", RedirectUri},
