@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Specialized;
+using Skybrud.Essentials.Common;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Client;
 using Skybrud.Essentials.Http.Collections;
-using Skybrud.Essentials.Strings;
 using Skybrud.Social.Slack.Endpoints.Raw;
 using Skybrud.Social.Slack.Responses.Authentication;
 using Skybrud.Social.Slack.Scopes;
@@ -124,50 +123,62 @@ namespace Skybrud.Social.Slack.OAuth {
         #region Member methods
 
         /// <summary>
-        /// Gets an authorization URL using the specified <code>state</code>. This URL will only make your application
+        /// Gets an authorization URL using the specified <paramref name="state"/>. This URL will only make your application
         /// request a basic scope.
         /// </summary>
         /// <param name="state">A unique state for the request.</param>
+        /// <returns>An authorization URL based on <paramref name="state"/>.</returns>
         public string GetAuthorizationUrl(string state) {
-            return $"https://slack.com/oauth/authorize?client_id={StringUtils.UrlEncode(ClientId)}&redirect_uri={StringUtils.UrlEncode(RedirectUri)}&state={StringUtils.UrlEncode(state)}";
-        }
 
-        protected override void PrepareHttpRequest(IHttpRequest request) {
-            
-            request.QueryString = request.QueryString ?? new HttpQueryString();
-            
-            // Append the access token to the query string if present in the client and not already
-            // specified in the query string
-            if (!request.QueryString.ContainsKey("token") && !String.IsNullOrWhiteSpace(AccessToken)) {
-                request.QueryString.Add("token", AccessToken);
-            }
+            if (string.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException(nameof(ClientId));
+            if (string.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException(nameof(RedirectUri));
+            if (string.IsNullOrWhiteSpace(state)) throw new ArgumentNullException(nameof(state));
+
+            HttpQueryString query = new HttpQueryString {
+                {"client_id", ClientId},
+                { "redirect_uri", RedirectUri},
+                { "state", state}
+            };
+
+            return "https://slack.com/oauth/authorize" + query;
 
         }
 
         /// <summary>
-        /// Gets an authorization URL using the specified <code>state</code>. This URL will only make your application
-        /// request a basic scope.
+        /// Gets an authorization URL using the specified <paramref name="state"/>.
         /// </summary>
         /// <param name="state">A unique state for the request.</param>
         /// <param name="scope">The scope of the application.</param>
+        /// <returns>An authorization URL based on <paramref name="state"/> and <paramref name="scope"/>.</returns>
         public string GetAuthorizationUrl(string state, SlackScopeCollection scope) {
-            if (String.IsNullOrWhiteSpace(state)) throw new ArgumentNullException(nameof(state));
+
+            if (string.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException(nameof(ClientId));
+            if (string.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException(nameof(RedirectUri));
+            if (string.IsNullOrWhiteSpace(state)) throw new ArgumentNullException(nameof(state));
             if (scope == null) throw new ArgumentNullException(nameof(scope));
-            return String.Format(
-                "https://slack.com/oauth/authorize?client_id={0}&redirect_uri={1}&state={2}&scope={3}",
-                StringUtils.UrlEncode(ClientId),
-                StringUtils.UrlEncode(RedirectUri),
-                StringUtils.UrlEncode(state),
-                StringUtils.UrlEncode(scope.ToString())
-            );
+
+            HttpQueryString query = new HttpQueryString {
+                {"client_id", ClientId},
+                {"redirect_uri", RedirectUri},
+                {"state", state},
+                {"scope", scope}
+            };
+
+            return "https://slack.com/oauth/authorize" + query;
+
         }
 
         /// <summary>
         /// Exchanges the specified authorization code for a refresh token and an access token.
         /// </summary>
         /// <param name="authCode">The authorization code received from the Slack OAuth dialog.</param>
-        /// <returns>Returns an access token based on the specified <code>authCode</code>.</returns>
+        /// <returns>An access token based on the specified <paramref name="authCode"/>.</returns>
         public SlackTokenResponse GetAccessTokenFromAuthCode(string authCode) {
+
+            if (string.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException(nameof(ClientId));
+            if (string.IsNullOrWhiteSpace(ClientSecret)) throw new PropertyNotSetException(nameof(ClientSecret));
+            if (string.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException(nameof(RedirectUri));
+            if (string.IsNullOrWhiteSpace(authCode)) throw new ArgumentNullException(nameof(authCode));
 
             // Initialize collection with POST data
             IHttpPostData parameters = new HttpPostData {
@@ -178,13 +189,24 @@ namespace Skybrud.Social.Slack.OAuth {
             };
 
             // Make the call to the API
-            IHttpResponse response = HttpUtils.Requests.Post("https://slack.com/api/oauth.access", null, parameters);
+            IHttpResponse response = HttpUtils.Requests.Post("https://slack.com/api/oauth.access", parameters);
 
             // Parse the response
             return SlackTokenResponse.ParseResponse(response);
 
         }
         
+        protected override void PrepareHttpRequest(IHttpRequest request) {
+            
+            request.QueryString = request.QueryString ?? new HttpQueryString();
+            
+            // Append the access token to the query string if present in the client and not already
+            // specified in the query string
+            if (!request.QueryString.ContainsKey("token") && !string.IsNullOrWhiteSpace(AccessToken)) {
+                request.QueryString.Add("token", AccessToken);
+            }
+
+        }
 
         #endregion
 

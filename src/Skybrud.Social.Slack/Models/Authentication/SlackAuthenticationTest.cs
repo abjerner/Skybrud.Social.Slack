@@ -7,39 +7,43 @@ namespace Skybrud.Social.Slack.Models.Authentication {
 
         #region Properties
 
-        public string Url { get; private set; }
+        public string Url { get; }
 
-        public string Team { get; private set; }
+        public string Team { get; }
 
-        public string User { get; private set; }
+        public string User { get; }
 
-        public string TeamId { get; private set; }
+        public string TeamId { get; }
 
-        public string UserId { get; private set; }
+        public string UserId { get; }
 
         #endregion
 
         #region Constructors
 
-        private SlackAuthenticationTest(JObject obj) : base(obj) { }
+        /// <summary>
+        /// Initializes a new instance based on the specified <paramref name="obj"/>.
+        /// </summary>
+        /// <param name="obj">An instance of <see cref="JObject"/> representing the object.</param>
+        protected SlackAuthenticationTest(JObject obj) : base(obj) {
+            Url = obj.GetString("url");
+            Team = obj.GetString("team");
+            User = obj.GetString("user");
+            TeamId = obj.GetString("team_id");
+            UserId = obj.GetString("user_id");
+        }
 
         #endregion
 
         #region Static methods
 
         /// <summary>
-        /// Gets an instance of <code>SlackAuthenticationTest</code> from the specified <code>JObject</code>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackAuthenticationTest"/>.
         /// </summary>
-        /// <param name="obj">The instance of <code>JsonObject</code> to parse.</param>
+        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <returns>An instance of <see cref="SlackAuthenticationTest"/>.</returns>
         public static SlackAuthenticationTest Parse(JObject obj) {
-            if (obj == null) return null;
-            return new SlackAuthenticationTest(obj) {
-                Url = obj.GetString("url"),
-                Team = obj.GetString("team"),
-                User = obj.GetString("user"),
-                TeamId = obj.GetString("team_id"),
-                UserId = obj.GetString("user_id")
-            };
+            return obj == null ? null : new SlackAuthenticationTest(obj);
         }
 
         #endregion

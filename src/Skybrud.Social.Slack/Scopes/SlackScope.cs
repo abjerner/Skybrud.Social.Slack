@@ -20,12 +20,12 @@ namespace Skybrud.Social.Slack.Scopes {
         /// <summary>
         /// Gets the name of the scope.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; }
 
         /// <summary>
         /// Gets the description of the scope.
         /// </summary>
-        public string Description { get; private set; }
+        public string Description { get; }
 
         /// <summary>
         /// Gets the lookup dictionary of registered scopes.
@@ -47,9 +47,7 @@ namespace Skybrud.Social.Slack.Scopes {
         /// <summary>
         /// Gets an array of registered scopes.
         /// </summary>
-        public static SlackScope[] Scopes {
-            get { return Lookup.Values.ToArray(); }
-        }
+        public static SlackScope[] Scopes => Lookup.Values.ToArray();
 
         #endregion
 
@@ -109,21 +107,19 @@ namespace Skybrud.Social.Slack.Scopes {
         }
 
         /// <summary>
-        /// Attempts to get a scope with the specified <code>name</code>.
+        /// Attempts to get a scope with the specified <paramref name="name"/>.
         /// </summary>
         /// <param name="name">The name of the scope.</param>
-        /// <returns>Gets a scope matching the specified <code>name</code>, or <code>null</code> if not found-</returns>
+        /// <returns>A scope matching the specified <paramref name="name"/>, or <c>null</c> if not found.</returns>
         public static SlackScope GetScope(string name) {
-            SlackScope scope;
-            return Lookup.TryGetValue(name, out scope) ? scope : null;
+            return Lookup.TryGetValue(name, out SlackScope scope) ? scope : null;
         }
 
         /// <summary>
-        /// Gets whether the scope is a known scope.
+        /// Returns whether the scope is a known scope.
         /// </summary>
         /// <param name="name">The name of the scope.</param>
-        /// <returns>Returns <code>true</code> if the specified <code>name</code> matches a known
-        /// scope, otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if the specified <paramref name="name"/> matches a known scope, otherwise <c>false</c>.</returns>
         public static bool ScopeExists(string name) {
             return Lookup.ContainsKey(name);
         }
@@ -133,8 +129,7 @@ namespace Skybrud.Social.Slack.Scopes {
         #region Operators
 
         /// <summary>
-        /// Adding two instances of <code>SlackScope</code> will result in a
-        /// <code>SlackScopeCollection</code> containing both scopes.
+        /// Adding two instances of <see cref="SlackScope"/> will result in a <see cref="SlackScopeCollection"/> containing both scopes.
         /// </summary>
         /// <param name="left">The left scope.</param>
         /// <param name="right">The right scope.</param>

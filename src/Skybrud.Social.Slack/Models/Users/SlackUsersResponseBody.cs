@@ -3,34 +3,41 @@ using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.Slack.Models.Users {
     
+    /// <summary>
+    /// Class representing a list of Slack users (members of a Slack team).
+    /// </summary>
     public class SlackUsersResponseBody : SlackObject {
 
         #region Properties
 
         /// <summary>
-        /// Gets a reference to the members of the team.
+        /// Gets an array with the members of the team.
         /// </summary>
-        public SlackUser[] Members { get; private set; }
-        
+        public SlackUser[] Members { get; }
+
         #endregion
 
         #region Constructors
 
-        private SlackUsersResponseBody(JObject obj) : base(obj) { }
+        /// <summary>
+        /// Initializes a new instance based on the specified <paramref name="obj"/>.
+        /// </summary>
+        /// <param name="obj">An instance of <see cref="JObject"/> representing the object.</param>
+        protected SlackUsersResponseBody(JObject obj) : base(obj) {
+            Members = obj.GetArrayItems("members", SlackUser.Parse);
+        }
 
         #endregion
 
         #region Static methods
 
         /// <summary>
-        /// Gets an instance of <code>SlackUsersResponseBody</code> from the specified <code>JObject</code>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackUsersResponseBody"/>.
         /// </summary>
-        /// <param name="obj">The instance of <code>JsonObject</code> to parse.</param>
+        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <returns>An instance of <see cref="SlackUsersResponseBody"/>.</returns>
         public static SlackUsersResponseBody Parse(JObject obj) {
-            if (obj == null) return null;
-            return new SlackUsersResponseBody(obj) {
-                Members = obj.GetArrayItems("members", SlackUser.Parse)
-            };
+            return obj == null ? null : new SlackUsersResponseBody(obj);
         }
 
         #endregion

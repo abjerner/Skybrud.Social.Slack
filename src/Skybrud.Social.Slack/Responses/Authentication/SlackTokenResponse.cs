@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Http;
 using Skybrud.Social.Slack.Models.Authentication;
 
@@ -11,30 +12,23 @@ namespace Skybrud.Social.Slack.Responses.Authentication {
         
         #region Constructors
 
-        private SlackTokenResponse(IHttpResponse response) : base(response) { }
+        private SlackTokenResponse(IHttpResponse response) : base(response) {
+            ValidateResponse(response, out JObject body);
+            Body = SlackTokenInfo.Parse(body);
+        }
 
         #endregion
 
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>response</code> into an instance of <code>SlackTokenResponse</code>.
+        /// Parses the specified <paramref name="response"/> into an instance of <see cref="SlackTokenResponse"/>.
         /// </summary>
-        /// <param name="response">The response to be parsed.</param>
-        /// <returns>Returns an instance of <code>SlackTokenResponse</code>.</returns>
+        /// <param name="response">The instance of <see cref="IHttpResponse"/> representing the raw response.</param>
+        /// <returns>An instance of <see cref="SlackTokenResponse"/> representing the response.</returns>
         public static SlackTokenResponse ParseResponse(IHttpResponse response) {
-
-            // Some input validation
             if (response == null) throw new ArgumentNullException(nameof(response));
-            
-            // Validate the response
-            ValidateResponse(response);
-
-            // Initialize the response object
-            return new SlackTokenResponse(response) {
-                Body = ParseJsonObject(response.Body, SlackTokenInfo.Parse)
-            };
-
+            return new SlackTokenResponse(response);
         }
 
         #endregion

@@ -10,7 +10,7 @@ namespace Skybrud.Social.Slack.Models {
         /// <summary>
         /// Gets whether the request/response was successful.
         /// </summary>
-        public bool IsOk { get; private set; }
+        public bool IsOk { get; }
 
         #endregion
 

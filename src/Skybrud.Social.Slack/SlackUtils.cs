@@ -9,7 +9,7 @@ namespace Skybrud.Social.Slack {
 
         public static IHttpResponse PostMessage(string webhookUrl, SlackPostMessageOptions options) {
 
-            if (String.IsNullOrWhiteSpace(webhookUrl)) throw new ArgumentNullException(nameof(webhookUrl));
+            if (string.IsNullOrWhiteSpace(webhookUrl)) throw new ArgumentNullException(nameof(webhookUrl));
             if (options == null) throw new ArgumentNullException(nameof(options));
 
             // Initialize the request

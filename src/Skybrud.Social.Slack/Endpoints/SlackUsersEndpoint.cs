@@ -13,7 +13,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// <summary>
         /// Gets a reference to the Slack service.
         /// </summary>
-        public SlackService Service { get; private set; }
+        public SlackService Service { get; }
 
         /// <summary>
         /// A reference to the raw endpoint.
@@ -31,7 +31,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         #endregion
 
         #region Member methods
-        
+
         /// <summary>
         /// Gets information about a team member.
         /// </summary>
@@ -39,6 +39,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// <see>
         ///     <cref>https://api.slack.com/methods/users.info</cref>
         /// </see>
+        /// <returns>An instance of <see cref="SlackGetUserInfoResponse"/> representing the response.</returns>
         public SlackGetUserInfoResponse GetInfo(string userId) {
             return SlackGetUserInfoResponse.ParseResponse(Raw.GetInfo(userId));
         }
@@ -49,6 +50,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// <see>
         ///     <cref>https://api.slack.com/methods/users.list</cref>
         /// </see>
+        /// <returns>An instance of <see cref="SlackGetUserListResponse"/> representing the response.</returns>
         public SlackGetUserListResponse GetList() {
             return SlackGetUserListResponse.ParseResponse(Raw.GetList());
         }
@@ -60,6 +62,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// <see>
         ///     <cref>https://api.slack.com/methods/users.list</cref>
         /// </see>
+        /// <returns>An instance of <see cref="SlackGetUserListResponse"/> representing the response.</returns>
         public SlackGetUserListResponse GetUsers(bool presence) {
             return SlackGetUserListResponse.ParseResponse(Raw.GetList(presence));
         }

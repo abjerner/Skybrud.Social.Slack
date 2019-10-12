@@ -13,7 +13,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// <summary>
         /// Gets a reference to the Slack service.
         /// </summary>
-        public SlackService Service { get; private set; }
+        public SlackService Service { get; }
 
         /// <summary>
         /// A reference to the raw endpoint.
@@ -35,6 +35,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// <summary>
         /// Checks authentication and tells you who you are.
         /// </summary>
+        /// <returns>An instance of <see cref="SlackAuthenticationTestResponse"/> representing the response.</returns>
         public SlackAuthenticationTestResponse GetTest() {
             return SlackAuthenticationTestResponse.ParseResponse(Raw.GetTest());
         }

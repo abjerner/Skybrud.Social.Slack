@@ -13,12 +13,12 @@ namespace Skybrud.Social.Slack.Exceptions {
         /// <summary>
         /// Gets a reference to the underlying <see cref="IHttpResponse"/>.
         /// </summary>
-        public IHttpResponse Response { get; private set; }
+        public IHttpResponse Response { get; }
 
         /// <summary>
         /// Gets the error returned by the Slack API.
         /// </summary>
-        public string Error { get; private set; }
+        public string Error { get; }
 
         #endregion
 

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Skybrud.Social.Slack.Scopes {
@@ -32,7 +31,7 @@ namespace Skybrud.Social.Slack.Scopes {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new collection based on the specified <code>array</code> of scopes.
+        /// Initializes a new collection based on the specified <paramref name="array"/> of scopes.
         /// </summary>
         /// <param name="array">Array of scopes.</param>
         public SlackScopeCollection(params SlackScope[] array) {
@@ -44,7 +43,7 @@ namespace Skybrud.Social.Slack.Scopes {
         #region Member methods
 
         /// <summary>
-        /// Adds the specified <code>scope</code> to the collection.
+        /// Adds the specified <paramref name="scope"/> to the collection.
         /// </summary>
         /// <param name="scope">The scope to be added.</param>
         public void Add(SlackScope scope) {
@@ -72,7 +71,7 @@ namespace Skybrud.Social.Slack.Scopes {
         /// </summary>
         /// <returns>String of scopes separated by a comma.</returns>
         public override string ToString() {
-            return String.Join(",", from scope in _list select scope.Name);
+            return string.Join(",", from scope in _list select scope.Name);
         }
 
         #endregion
@@ -80,28 +79,28 @@ namespace Skybrud.Social.Slack.Scopes {
         #region Operator overloading
 
         /// <summary>
-        /// Initializes a new collection based on a single <code>scope</code>.
+        /// Initializes a new collection based on a single <paramref name="scope"/>.
         /// </summary>
         /// <param name="scope">The scope the collection should be based on.</param>
-        /// <returns>Returns a new collection based on a single <code>scope</code>.</returns>
+        /// <returns>Returns a new collection based on a single <paramref name="scope"/>.</returns>
         public static implicit operator SlackScopeCollection(SlackScope scope) {
             return new SlackScopeCollection(scope);
         }
 
         /// <summary>
-        /// Initializes a new collection based on an <code>array</code> of scopes.
+        /// Initializes a new collection based on an <paramref name="array"/> of scopes.
         /// </summary>
         /// <param name="array">The array of scopes the collection should be based on.</param>
-        /// <returns>Returns a new collection based on an <code>array</code> of scopes.</returns>
+        /// <returns>Returns a new collection based on an <paramref name="array"/> of scopes.</returns>
         public static implicit operator SlackScopeCollection(SlackScope[] array) {
             return new SlackScopeCollection(array ?? new SlackScope[0]);
         }
 
         /// <summary>
-        /// Adds support for adding a <code>scope</code> to the <code>collection</code> using the plus operator.
+        /// Adds support for adding a <paramref name="scope"/> to the <paramref name="collection"/> using the plus operator.
         /// </summary>
-        /// <param name="collection">The collection to which <code>scope</code> will be added.</param>
-        /// <param name="scope">The scope to be added to the <code>collection</code>.</param>
+        /// <param name="collection">The collection to which <paramref name="scope"/> will be added.</param>
+        /// <param name="scope">The scope to be added to the <paramref name="collection"/>.</param>
         public static SlackScopeCollection operator +(SlackScopeCollection collection, SlackScope scope) {
             collection.Add(scope);
             return collection;

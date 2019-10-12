@@ -13,7 +13,7 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         /// <summary>
         /// Gets a reference to the parent OAuth client.
         /// </summary>
-        public SlackOAuthClient Client { get; private set; }
+        public SlackOAuthClient Client { get; }
 
         #endregion
 
@@ -31,6 +31,7 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         /// Gets information about a team member.
         /// </summary>
         /// <param name="userId">The ID of the user.</param>
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://api.slack.com/methods/users.info</cref>
         /// </see>
@@ -41,6 +42,7 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         /// <summary>
         /// Gets a list of all users in the team. This includes deleted/deactivated users.
         /// </summary>
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://api.slack.com/methods/users.list</cref>
         /// </see>
@@ -52,6 +54,7 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         /// Gets a list of all users in the team. This includes deleted/deactivated users.
         /// </summary>
         /// <param name="presence">Specifies whether presence data should be included in the output.</param>
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://api.slack.com/methods/users.list</cref>
         /// </see>

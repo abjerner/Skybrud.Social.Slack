@@ -13,7 +13,7 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         /// <summary>
         /// Gets a reference to the parent OAuth client.
         /// </summary>
-        public SlackOAuthClient Client { get; private set; }
+        public SlackOAuthClient Client { get; }
 
         #endregion
 
@@ -30,6 +30,7 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         /// <summary>
         /// Checks authentication and tells you who you are.
         /// </summary>
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         public IHttpResponse GetTest() {
             return Client.Get("https://slack.com/api/auth.test");
         }

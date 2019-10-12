@@ -14,17 +14,17 @@ namespace Skybrud.Social.Slack {
         /// <summary>
         /// The internal OAuth client for communication with the Slack API.
         /// </summary>
-        public SlackOAuthClient Client { get; private set; }
+        public SlackOAuthClient Client { get; }
 
         /// <summary>
         /// Gets a reference to the authentication endpoint.
         /// </summary>
-        public SlackAuthenticationEndpoint Authentication { get; private set; }
+        public SlackAuthenticationEndpoint Authentication { get; }
 
         /// <summary>
         /// Gets a reference to the users endpoint.
         /// </summary>
-        public SlackUsersEndpoint Users { get; private set; }
+        public SlackUsersEndpoint Users { get; }
 
         #endregion
 
@@ -47,7 +47,7 @@ namespace Skybrud.Social.Slack {
         public static SlackService CreateFromOAuthClient(SlackOAuthClient client) {
 
             // This should never be null
-            if (client == null) throw new ArgumentNullException("client");
+            if (client == null) throw new ArgumentNullException(nameof(client));
 
             // Initialize the service
             return new SlackService(client);
@@ -59,6 +59,7 @@ namespace Skybrud.Social.Slack {
         /// </summary>
         /// <param name="accessToken">The access token.</param>
         public static SlackService CreateFromAccessToken(string accessToken) {
+            if (string.IsNullOrWhiteSpace(accessToken)) throw new ArgumentNullException(nameof(accessToken));
             return CreateFromOAuthClient(new SlackOAuthClient {
                 AccessToken = accessToken
             });

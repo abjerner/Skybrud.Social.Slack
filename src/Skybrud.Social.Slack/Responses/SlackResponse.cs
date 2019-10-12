@@ -21,16 +21,16 @@ namespace Skybrud.Social.Slack.Responses {
         #region Static methods
 
         /// <summary>
-        /// Validates the specified <code>response</code>.
+        /// Validates the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The response to be validated.</param>
-        public static void ValidateResponse(IHttpResponse response) {
+        protected void ValidateResponse(IHttpResponse response, out JObject obj) {
 
             // The Slack API will always return a "200 OK" status even when an error is returned, so we need to check
             // the "ok" property in the boolean instead
 
             // Get root object
-            JObject obj = JsonUtils.ParseJsonObject(response.Body);
+            obj = JsonUtils.ParseJsonObject(response.Body);
 
             // Is the request/response successful?
             bool isOk = obj.GetBoolean("ok");
@@ -38,6 +38,14 @@ namespace Skybrud.Social.Slack.Responses {
             // Now throw some exceptions
             if (!isOk) throw new SlackHttpException(response, obj.GetString("error"));
 
+        }
+
+        /// <summary>
+        /// Validates the specified <paramref name="response"/>.
+        /// </summary>
+        /// <param name="response">The response to be validated.</param>
+        protected void ValidateResponse(IHttpResponse response) {
+            ValidateResponse(response, out _);
         }
 
         #endregion
