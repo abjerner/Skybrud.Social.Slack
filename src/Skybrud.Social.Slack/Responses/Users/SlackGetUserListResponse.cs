@@ -5,13 +5,13 @@ using Skybrud.Social.Slack.Models.Users;
 
 namespace Skybrud.Social.Slack.Responses.Users {
 
-    public class SlackGetUserListResponse : SlackResponse<SlackUsersResponseBody> {
+    public class SlackGetUserListResponse : SlackResponse<SlackUserListResponseBody> {
 
         #region Constructors
 
         private SlackGetUserListResponse(IHttpResponse response) : base(response) {
             ValidateResponse(response, out JObject body);
-            Body = SlackUsersResponseBody.Parse(body);
+            Body = SlackUserListResponseBody.Parse(body);
         }
 
         #endregion
