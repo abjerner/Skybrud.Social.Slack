@@ -18,10 +18,15 @@
     <Description>Authentication and service implementation for the Slack API.</Description>
     <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Slack</RepositoryUrl>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Slack</RepositoryUrl>
+  </PropertyGroup>
   
   <PropertyGroup>
     <PackageTags>Slack, Skybrud, Social, OAuth, JSON, Webhook</PackageTags>
-    <PackageLicenseUrl>https://github.com/abjerner/Skybrud.Social.Slack/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/abjerner/Skybrud.Social.Slack</PackageProjectUrl>
     <PackageIconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</PackageIconUrl>
   </PropertyGroup>
@@ -31,16 +36,17 @@
     <PackageReference Include="Skybrud.Essentials.Http" Version="1.0.8" />
   </ItemGroup>
 
-  <!--<PropertyGroup>
+  <PropertyGroup>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Skybrud.Social.Slack.xml</DocumentationFile>
-  </PropertyGroup>-->
+  </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(TargetFramework)|$(RunBuildTargets)'=='netstandard1.3|true'">
-    <Exec Command="&quot;$(SolutionDir)build/Skybrud.PreBuildTool.exe&quot; /date=2015-09-12 /projectPath=&quot;$(ProjectPath)&quot;" />
+    <Exec Command="&quot;$(ProjectDir)../build/Skybrud.PreBuildTool.exe&quot; /date=2015-09-12 /projectPath=&quot;$(ProjectPath)&quot;" />
   </Target>
 
   <Target Name="PostBuild" BeforeTargets="PostBuildEvent" Condition="'$(TargetFramework)|$(RunBuildTargets)'=='net47|true'">
-    <Exec Command="&quot;$(SolutionDir)build\UpdateAssemblyInfoJson.exe&quot; &quot;$(ProjectPath)&quot; &quot;$(TargetPath)&quot;" />
+    <!--<Exec Command="&quot;$(ProjectDir)../build/UpdateAssemblyInfoJson.exe&quot; &quot;$(ProjectPath)&quot; &quot;$(TargetPath)&quot;" />-->
+    <Exec Command="&quot;$(ProjectDir)..\build\Skybrud.BuildTools.Tasks.exe&quot; &quot;postBuild&quot; &quot;$(ConfigurationName)&quot; &quot;$(ProjectPath)&quot; &quot;$(TargetPath)&quot;" />
   </Target>
 
 </Project>
