@@ -22,6 +22,11 @@ namespace Skybrud.Social.Slack {
         public SlackAuthenticationEndpoint Authentication { get; }
 
         /// <summary>
+        /// Gets a reference to the <strong>Channels</strong> endpoint.
+        /// </summary>
+        public SlackChannelsEndpoint Channels { get; }
+
+        /// <summary>
         /// Gets a reference to the users endpoint.
         /// </summary>
         public SlackUsersEndpoint Users { get; }
@@ -33,6 +38,7 @@ namespace Skybrud.Social.Slack {
         private SlackService(SlackOAuthClient client) {
             Client = client;
             Authentication = new SlackAuthenticationEndpoint(this);
+            Channels = new SlackChannelsEndpoint(this);
             Users = new SlackUsersEndpoint(this);
         }
 
