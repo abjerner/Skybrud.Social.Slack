@@ -6,7 +6,7 @@ namespace Skybrud.Social.Slack.Models.Users {
     /// <summary>
     /// Class representing a list of Slack users (members of a Slack team).
     /// </summary>
-    public class SlackUserListResponseBody : SlackObject {
+    public class SlackUserListResponseBody : SlackResponseBody {
 
         #region Properties
 
