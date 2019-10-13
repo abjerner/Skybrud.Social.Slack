@@ -43,7 +43,7 @@ namespace Skybrud.Social.Slack.OAuth {
         #region Endpoints
 
         /// <summary>
-        /// Gets a reference to the raw authentication endpoint.
+        /// Gets a reference to the raw <strong>Authentication</strong> endpoint.
         /// </summary>
         public SlackAuthenticationRawEndpoint Authentication { get; }
 
