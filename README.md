@@ -19,7 +19,7 @@ Grab a ZIP file of the latest release; unzip and move the files to the bin direc
 
 - [**Skybrud.Social.Http**](https://github.com/skybrud/Skybrud.Essentials.Http)<br />A small .NET library for making HTTP requests.
 
-- [**Json.NET**](https://github.com/jamesnk/newtonsoft.json)<br />Used for searializing/deserializing JSON.
+- [**Json.NET**](https://github.com/jamesnk/newtonsoft.json)<br />Used for serializing/deserializing JSON.
 
 ### Found a bug? Have a question?
 
