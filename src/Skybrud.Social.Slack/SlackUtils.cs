@@ -5,8 +5,20 @@ using Skybrud.Social.Slack.Options.Chat;
 
 namespace Skybrud.Social.Slack {
 
+    /// <summary>
+    /// Class with various utility and helper methods for working with the Slack API.
+    /// </summary>
     public static class SlackUtils {
-
+        
+        /// <summary>
+        /// Posts a message to the specified <paramref name="webhookUrl"/>.
+        /// </summary>
+        /// <param name="webhookUrl">The webhook URL.</param>
+        /// <param name="options">The options describing the message.</param>
+        /// <returns>An instance of <see cref="IHttpResponse"/> representing the response from the API.</returns>
+        /// <see>
+        ///     <cref>https://api.slack.com/messaging/webhooks</cref>
+        /// </see>
         public static IHttpResponse PostMessage(string webhookUrl, SlackPostMessageOptions options) {
 
             if (string.IsNullOrWhiteSpace(webhookUrl)) throw new ArgumentNullException(nameof(webhookUrl));
