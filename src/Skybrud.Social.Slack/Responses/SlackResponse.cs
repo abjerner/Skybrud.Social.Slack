@@ -14,6 +14,10 @@ namespace Skybrud.Social.Slack.Responses {
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="response"/>.
+        /// </summary>
+        /// <param name="response">The response.</param>
         protected SlackResponse(IHttpResponse response) : base(response) { }
 
         #endregion
@@ -24,6 +28,7 @@ namespace Skybrud.Social.Slack.Responses {
         /// Validates the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The response to be validated.</param>
+        /// <param name="obj">A JSON object parsed from the response body.</param>
         protected void ValidateResponse(IHttpResponse response, out JObject obj) {
 
             // The Slack API will always return a "200 OK" status even when an error is returned, so we need to check
@@ -68,6 +73,10 @@ namespace Skybrud.Social.Slack.Responses {
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="response"/>.
+        /// </summary>
+        /// <param name="response">The response.</param>
         protected SlackResponse(IHttpResponse response) : base(response) { }
 
         #endregion

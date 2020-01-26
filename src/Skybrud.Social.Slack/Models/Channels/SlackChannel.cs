@@ -10,6 +10,9 @@ namespace Skybrud.Social.Slack.Models.Channels {
     /// <see>
     ///     <cref>https://api.slack.com/types/channel</cref>
     /// </see>
+    /// <see>
+    ///     <cref>https://api.slack.com/types/conversation</cref>
+    /// </see>
     public class SlackChannel : SlackObject {
 
         #region Properties
@@ -24,6 +27,9 @@ namespace Skybrud.Social.Slack.Models.Channels {
         /// </summary>
         public string Name { get; }
 
+        /// <summary>
+        /// Gets whether the channel is a channel.
+        /// </summary>
         public bool IsChannel { get; }
 
         /// <summary>
@@ -48,10 +54,21 @@ namespace Skybrud.Social.Slack.Models.Channels {
         /// </summary>
         public string Creator { get; }
 
+        /// <summary>
+        /// Gets the name of the channel, but with with any non-Latin characters filtered out.
+        /// </summary>
         public string NameNormalized { get; }
 
+        /// <summary>
+        /// Gets whether the channel is shared between two teams.
+        /// </summary>
         public bool IsShared { get; }
 
+        /// <summary>
+        /// Gets whether the channel is shared between <a href="https://api.slack.com/enterprise-grid">Enterprise Grid</a>
+        /// workspaces within the same organization. It's a little different from (externally)
+        /// <a href="https://api.slack.com/shared-channels">Shared Channels</a>.
+        /// </summary>
         public bool IsOrgShared { get; }
 
         /// <summary>
@@ -59,8 +76,14 @@ namespace Skybrud.Social.Slack.Models.Channels {
         /// </summary>
         public bool IsMember { get; }
 
+        /// <summary>
+        /// Gets whether the channel is private.
+        /// </summary>
         public bool IsPrivate { get; }
 
+        /// <summary>
+        /// Gets whether the channel represents an unnamed private conversation between multiple users.
+        /// </summary>
         public bool IsMpim { get; }
 
         /// <summary>
@@ -88,8 +111,14 @@ namespace Skybrud.Social.Slack.Models.Channels {
         /// </summary>
         public bool HasPurpose => Purpose != null && string.IsNullOrWhiteSpace(Purpose.Value) == false;
 
+        /// <summary>
+        /// Gets an array with names the channel have had in the past.
+        /// </summary>
         public string[] PreviousNames { get; }
 
+        /// <summary>
+        /// Gets the total amount of members in the channel.
+        /// </summary>
         public long NumMembers { get; }
 
         #endregion

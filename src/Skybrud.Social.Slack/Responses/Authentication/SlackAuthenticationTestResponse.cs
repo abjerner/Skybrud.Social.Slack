@@ -5,6 +5,9 @@ using Skybrud.Social.Slack.Models.Authentication;
 
 namespace Skybrud.Social.Slack.Responses.Authentication {
 
+    /// <summary>
+    /// Class representing a response wrarring an instance of <see cref="SlackAuthenticationTest"/>.
+    /// </summary>
     public class SlackAuthenticationTestResponse : SlackResponse<SlackAuthenticationTest> {
 
         #region Constructors

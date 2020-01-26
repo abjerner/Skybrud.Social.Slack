@@ -5,6 +5,9 @@ using Skybrud.Social.Slack.Models.Channels;
 
 namespace Skybrud.Social.Slack.Responses.Channels {
 
+    /// <summary>
+    /// Class representing a response with information about a Slack channel.
+    /// </summary>
     public class SlackGetChannelInfoResponse : SlackResponse<SlackChannelResponseBody> {
 
         #region Constructors

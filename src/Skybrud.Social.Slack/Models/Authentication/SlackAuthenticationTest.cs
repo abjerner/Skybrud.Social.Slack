@@ -3,18 +3,36 @@ using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.Slack.Models.Authentication {
     
+    /// <summary>
+    /// Class with brief information about the authed user.
+    /// </summary>
     public class SlackAuthenticationTest : SlackObject {
 
         #region Properties
 
+        /// <summary>
+        /// Gets the web URL of the user's Slack team.
+        /// </summary>
         public string Url { get; }
 
+        /// <summary>
+        /// Gets the name of the user's Slack team.
+        /// </summary>
         public string Team { get; }
 
+        /// <summary>
+        /// Gets the username of the authed user.
+        /// </summary>
         public string User { get; }
 
+        /// <summary>
+        /// gets the ID of the user's team.
+        /// </summary>
         public string TeamId { get; }
 
+        /// <summary>
+        /// Gets the ID if the authed user.
+        /// </summary>
         public string UserId { get; }
 
         #endregion

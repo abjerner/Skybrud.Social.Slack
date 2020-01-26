@@ -5,6 +5,9 @@ using Skybrud.Social.Slack.Models.Channels;
 
 namespace Skybrud.Social.Slack.Responses.Channels {
 
+    /// <summary>
+    /// Class representing a response with a list of Slack users.
+    /// </summary>
     public class SlackGetChannelListResponse : SlackResponse<SlackChannelListResponseBody> {
 
         #region Constructors

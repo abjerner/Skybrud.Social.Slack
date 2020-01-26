@@ -10,23 +10,50 @@ namespace Skybrud.Social.Slack.Models.Teams {
 
         #region Properties
 
+        /// <summary>
+        /// Gets the URL to a version the team's icon measuring 34x34 pixels.
+        /// </summary>
         public string Image34 { get; }
 
+        /// <summary>
+        /// Gets the URL to a version the team's icon measuring 44x34 pixels.
+        /// </summary>
         public string Image44 { get; }
 
+        /// <summary>
+        /// Gets the URL to a version the team's icon measuring 68x68 pixels.
+        /// </summary>
         public string Image68 { get; }
 
+        /// <summary>
+        /// Gets the URL to a version the team's icon measuring 88x88 pixels.
+        /// </summary>
         public string Image88 { get; }
 
+        /// <summary>
+        /// Gets the URL to a version the team's icon measuring 102x102 pixels.
+        /// </summary>
         public string Image102 { get; }
 
+        /// <summary>
+        /// Gets the URL to a version the team's icon measuring 132x1324 pixels.
+        /// </summary>
         public string Image132 { get; }
 
+        /// <summary>
+        /// Gets the URL to a version the team's icon measuring 230x230 pixels.
+        /// </summary>
         public string Image230 { get; }
 
+        /// <summary>
+        /// Gets the URL to the original image used for the team's icon.
+        /// </summary>
         public string ImageOriginal { get; }
 
-        public bool ImageDefault { get; }
+        /// <summary>
+        /// Gets whether the team is using the default Slack icon.
+        /// </summary>
+        public bool IsImageDefault { get; }
 
         #endregion
 
@@ -45,7 +72,7 @@ namespace Skybrud.Social.Slack.Models.Teams {
             Image132 = obj.GetString("image_132");
             Image230 = obj.GetString("image_230");
             ImageOriginal = obj.GetString("image_original");
-            ImageDefault = obj.GetBoolean("image_default");
+            IsImageDefault = obj.GetBoolean("image_default");
         }
 
         #endregion

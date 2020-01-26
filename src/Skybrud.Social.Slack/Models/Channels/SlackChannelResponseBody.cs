@@ -10,6 +10,9 @@ namespace Skybrud.Social.Slack.Models.Channels {
 
         #region Properties
 
+        /// <summary>
+        /// Gets a reference to the channel from the response body.
+        /// </summary>
         public SlackChannel Channel { get; }
 
         #endregion

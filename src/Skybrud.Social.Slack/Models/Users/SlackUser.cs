@@ -7,41 +7,87 @@ namespace Skybrud.Social.Slack.Models.Users {
     /// <summary>
     /// Class representing a Slack user.
     /// </summary>
+    /// <see>
+    ///     <cref>https://api.slack.com/types/user</cref>
+    /// </see>
     public class SlackUser : SlackObject {
 
         #region Properties
 
+        /// <summary>
+        /// Gets the ID of the user.
+        /// </summary>
         public string Id { get; }
 
+        /// <summary>
+        /// Gets the name of the user.
+        /// </summary>
         public string Name { get; }
 
+        /// <summary>
+        /// Gets whether the user has been delted.
+        /// </summary>
         public bool IsDeleted { get; }
 
+        /// <summary>
+        /// Gets the color of the user. Used in some clients to display a special username color.
+        /// </summary>
         public string Color { get; }
 
+        /// <summary>
+        /// Gets the real name of the user.
+        /// </summary>
         public string RealName { get; }
 
+        /// <summary>
+        /// Gets a human-readable string for the geographic timezone-related region this user has specified in their account - eg. <c>Europe/Amsterdam</c>.
+        /// </summary>
         public string TimeZone { get; }
 
+        /// <summary>
+        /// Gets the commonly used name of the timezone - eg. <c>Central European Time</c>.
+        /// </summary>
         public string TimeZoneLabel { get; }
 
+        /// <summary>
+        /// Gets the UTC offset of the user's time zone.
+        /// </summary>
         public TimeSpan TimeZoneOffset { get; }
 
+        /// <summary>
+        /// Gets a reference to the profile of the user.
+        /// </summary>
         public SlackUserProfile Profile { get; }
 
+        /// <summary>
+        /// Gets whether the user is an admin of the current team.
+        /// </summary>
         public bool IsAdmin { get; }
         
+        /// <summary>
+        /// Gets whether the user is an owner of the current team.
+        /// </summary>
         public bool IsOwner { get; }
         
+        /// <summary>
+        /// Gets whether the user is the primary user of the current team.
+        /// </summary>
         public bool IsPrimaryOwner { get; }
-        
+
+        /// <summary>
+        /// Gets whether the user is restricted to a number of channels within the current team.
+        /// </summary>
         public bool IsRestricted { get; }
-        
+
+        /// <summary>
+        /// Gets whether the user is restricted to a single channel within the current team.
+        /// </summary>
         public bool IsUltraRestricted { get; }
         
+        /// <summary>
+        /// Gets whether the user is a bot.
+        /// </summary>
         public bool IsBot { get; }
-        
-        public bool HasFiles { get; }
         
         /// <summary>
         /// Gets whether the user has enabled 2 factor authentication.
@@ -77,7 +123,6 @@ namespace Skybrud.Social.Slack.Models.Users {
             IsRestricted = obj.GetBoolean("is_restricted");
             IsUltraRestricted = obj.GetBoolean("is_ultra_restricted");
             IsBot = obj.GetBoolean("is_bot");
-            HasFiles = obj.GetBoolean("has_files");
             Has2Fa = obj.GetBoolean("has_2fa");
             Presence = obj.GetEnum("presence", SlackPresence.Unspecified);
         }

@@ -3,6 +3,9 @@ using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.Slack.Models.Users {
     
+    /// <summary>
+    /// Class representing a response body with information about a Slack user.
+    /// </summary>
     public class SlackUserResponseBody : SlackResponseBody {
 
         #region Properties

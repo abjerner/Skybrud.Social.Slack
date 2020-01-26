@@ -5,6 +5,9 @@ using Skybrud.Social.Slack.Models.Users;
 
 namespace Skybrud.Social.Slack.Responses.Users {
 
+    /// <summary>
+    /// Class representing a response with information about a Slack user.
+    /// </summary>
     public class SlackGetUserInfoResponse : SlackResponse<SlackUserResponseBody> {
 
         #region Constructors

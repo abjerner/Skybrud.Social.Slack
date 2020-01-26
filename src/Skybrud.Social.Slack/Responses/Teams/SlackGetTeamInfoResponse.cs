@@ -5,6 +5,9 @@ using Skybrud.Social.Slack.Models.Teams;
 
 namespace Skybrud.Social.Slack.Responses.Teams {
 
+    /// <summary>
+    /// Class representing a response with information about a Slack team.
+    /// </summary>
     public class SlackGetTeamInfoResponse : SlackResponse<SlackTeamResponseBody> {
 
         #region Constructors

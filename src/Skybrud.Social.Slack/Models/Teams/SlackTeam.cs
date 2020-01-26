@@ -10,14 +10,29 @@ namespace Skybrud.Social.Slack.Models.Teams {
 
         #region Properties
 
+        /// <summary>
+        /// Gets the ID of the team.
+        /// </summary>
         public string Id { get; }
 
+        /// <summary>
+        /// Gets the name of the team.
+        /// </summary>
         public string Name { get; }
 
+        /// <summary>
+        /// Gets the domain of the team.
+        /// </summary>
         public string Domain { get; }
 
+        /// <summary>
+        /// Gets the email domain of the team.
+        /// </summary>
         public string EmailDomain { get; }
 
+        /// <summary>
+        /// Gets information about the team icon.
+        /// </summary>
         public SlackTeamIcon Icon { get; }
 
         #endregion

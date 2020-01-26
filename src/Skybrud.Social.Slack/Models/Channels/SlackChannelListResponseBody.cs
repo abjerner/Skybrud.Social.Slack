@@ -10,6 +10,9 @@ namespace Skybrud.Social.Slack.Models.Channels {
 
         #region Properties
 
+        /// <summary>
+        /// Gets an array with the channels of the response.
+        /// </summary>
         public SlackChannel[] Channels { get; }
 
         #endregion
