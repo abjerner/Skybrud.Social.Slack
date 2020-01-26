@@ -10,11 +10,11 @@
 
   <PropertyGroup>
     <RootNamespace>Skybrud.Social.Slack</RootNamespace>
-    <Version>1.0.0-beta002</Version>
+    <Version>1.0.0-beta003</Version>
     <Company>Skybrud.dk a/s</Company>
     <Product>Skybrud.Social</Product>
     <Authors>Anders Bjerner</Authors>
-    <Copyright>Copyright © 2019</Copyright>
+    <Copyright>Copyright © 2020</Copyright>
     <Description>Authentication and service implementation for the Slack API.</Description>
     <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Slack</RepositoryUrl>
   </PropertyGroup>
