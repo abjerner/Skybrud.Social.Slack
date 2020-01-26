@@ -209,13 +209,10 @@ namespace Skybrud.Social.Slack.OAuth {
         }
         
         protected override void PrepareHttpRequest(IHttpRequest request) {
-            
-            request.QueryString = request.QueryString ?? new HttpQueryString();
-            
-            // Append the access token to the query string if present in the client and not already
-            // specified in the query string
-            if (!request.QueryString.ContainsKey("token") && !string.IsNullOrWhiteSpace(AccessToken)) {
-                request.QueryString.Add("token", AccessToken);
+
+            // Append the "Authorization" header when an access token is present
+            if (string.IsNullOrWhiteSpace(AccessToken) == false) {
+                request.Headers.Authorization = "Bearer " + AccessToken;
             }
 
         }
