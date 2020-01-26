@@ -152,7 +152,7 @@ namespace Skybrud.Social.Slack.OAuth {
                 { "state", state}
             };
 
-            return "https://slack.com/oauth/authorize" + query;
+            return "https://slack.com/oauth/authorize?" + query;
 
         }
 
@@ -176,7 +176,7 @@ namespace Skybrud.Social.Slack.OAuth {
                 {"scope", scope}
             };
 
-            return "https://slack.com/oauth/authorize" + query;
+            return "https://slack.com/oauth/authorize?" + query;
 
         }
 
