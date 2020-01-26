@@ -18,6 +18,11 @@ namespace Skybrud.Social.Slack.Scopes {
         #region Properties
 
         /// <summary>
+        /// Gets the alias of the scope.
+        /// </summary>
+        public string Alias { get; }
+
+        /// <summary>
         /// Gets the name of the scope.
         /// </summary>
         public string Name { get; }
@@ -28,38 +33,51 @@ namespace Skybrud.Social.Slack.Scopes {
         public string Description { get; }
 
         /// <summary>
-        /// Gets the lookup dictionary of registered scopes.
+        /// Gets an array of registered scopes.
         /// </summary>
+        public static SlackScope[] Scopes => Lookup.Values.ToArray();
+
+
         private static Dictionary<string, SlackScope> Lookup {
             get {
                 if (_lookup == null) {
                     _lookup = new Dictionary<string, SlackScope>();
-                    _lookup.Add(SlackScopes.Identify.Name, SlackScopes.Identify);
-                    _lookup.Add(SlackScopes.Read.Name, SlackScopes.Read);
-                    _lookup.Add(SlackScopes.Post.Name, SlackScopes.Post);
-                    _lookup.Add(SlackScopes.Client.Name, SlackScopes.Client);
-                    _lookup.Add(SlackScopes.Admin.Name, SlackScopes.Admin);
+                    foreach (SlackScopeGroup group in SlackScopes.Groups) {
+                        foreach (SlackScope scope in group.Scopes) {
+                            Lookup.Add(scope.Alias, scope);
+                        }
+                    }
                 }
                 return _lookup;
             }
         }
-
-        /// <summary>
-        /// Gets an array of registered scopes.
-        /// </summary>
-        public static SlackScope[] Scopes => Lookup.Values.ToArray();
 
         #endregion
 
         #region Constructors
 
         /// <summary>
-        /// Initializes a new scope based on the specified <code>name</code> and <code>description</code>.
+        /// Initializes a new scope based on the specified <paramref name="alias"/>.
         /// </summary>
+        /// <param name="alias">The name of the scope.</param>
+        internal SlackScope(string alias) : this(alias, null, null) { }
+
+        /// <summary>
+        /// Initializes a new scope based on the specified <paramref name="alias"/> and <paramref name="name"/>.
+        /// </summary>
+        /// <param name="alias">The name of the scope.</param>
+        /// <param name="name">The name of the scope.</param>
+        internal SlackScope(string alias, string name) : this(alias, name, null) { }
+
+        /// <summary>
+        /// Initializes a new scope based on the specified <paramref name="alias"/>, <paramref name="name"/> and <paramref name="description"/>.
+        /// </summary>
+        /// <param name="alias">The name of the scope.</param>
         /// <param name="name">The name of the scope.</param>
         /// <param name="description">The description of the scope.</param>
-        internal SlackScope(string name, string description) {
-            Name = name;
+        internal SlackScope(string alias, string name, string description) {
+            Alias = alias;
+            Name = name ?? alias;
             Description = description;
         }
 
@@ -67,8 +85,9 @@ namespace Skybrud.Social.Slack.Scopes {
 
         #region Member methods
 
+        /// <inheritdoc />
         public override string ToString() {
-            return Name;
+            return Alias;
         }
 
         #endregion
@@ -81,47 +100,57 @@ namespace Skybrud.Social.Slack.Scopes {
         /// <param name="scope">The scope to be registered.</param>
         public static SlackScope RegisterScope(SlackScope scope) {
             if (scope == null) throw new ArgumentNullException(nameof(scope));
-            if (Lookup.ContainsKey(scope.Name)) throw new ArgumentException("A scope with the specified name has already been registered.", nameof(scope));
-            Lookup.Add(scope.Name, scope);
+            if (Lookup.ContainsKey(scope.Alias)) throw new ArgumentException("A scope with the specified alias has already been registered.", nameof(scope));
+            Lookup.Add(scope.Alias, scope);
             return scope;
         }
 
         /// <summary>
         /// Registers a scope in the internal dictionary.
         /// </summary>
-        /// <param name="name">The name of the scope.</param>
-        public static SlackScope RegisterScope(string name) {
-            return RegisterScope(name, null);
+        /// <param name="alias">The alias of the scope.</param>
+        public static SlackScope RegisterScope(string alias) {
+            return RegisterScope(alias, null, null);
         }
 
         /// <summary>
         /// Registers a scope in the internal dictionary.
         /// </summary>
+        /// <param name="alias">The alias of the scope.</param>
+        /// <param name="name">The name of the scope.</param>
+        public static SlackScope RegisterScope(string alias, string name) {
+            return RegisterScope(alias, name, null);
+        }
+
+        /// <summary>
+        /// Registers a scope in the internal dictionary.
+        /// </summary>
+        /// <param name="alias">The alias of the scope.</param>
         /// <param name="name">The name of the scope.</param>
         /// <param name="description">The description of the scope.</param>
-        public static SlackScope RegisterScope(string name, string description) {
-            if (Lookup.ContainsKey(name)) throw new ArgumentException("A scope with the specified name \"" + name + "\" has already been registered.", nameof(name));
-            SlackScope scope = new SlackScope(name, description);
+        public static SlackScope RegisterScope(string alias, string name, string description) {
+            if (Lookup.ContainsKey(alias)) throw new ArgumentException("A scope with the specified alias \"" + alias + "\" has already been registered.", nameof(alias));
+            SlackScope scope = new SlackScope(alias, name ?? alias, description);
             Lookup.Add(scope.Name, scope);
             return scope;
         }
 
         /// <summary>
-        /// Attempts to get a scope with the specified <paramref name="name"/>.
+        /// Attempts to get a scope with the specified <paramref name="alias"/>.
         /// </summary>
-        /// <param name="name">The name of the scope.</param>
-        /// <returns>A scope matching the specified <paramref name="name"/>, or <c>null</c> if not found.</returns>
-        public static SlackScope GetScope(string name) {
-            return Lookup.TryGetValue(name, out SlackScope scope) ? scope : null;
+        /// <param name="alias">The alias of the scope.</param>
+        /// <returns>A scope matching the specified <paramref name="alias"/>, or <c>null</c> if not found.</returns>
+        public static SlackScope GetScope(string alias) {
+            return Lookup.TryGetValue(alias, out SlackScope scope) ? scope : null;
         }
 
         /// <summary>
         /// Returns whether the scope is a known scope.
         /// </summary>
-        /// <param name="name">The name of the scope.</param>
-        /// <returns><c>true</c> if the specified <paramref name="name"/> matches a known scope, otherwise <c>false</c>.</returns>
-        public static bool ScopeExists(string name) {
-            return Lookup.ContainsKey(name);
+        /// <param name="alias">The alias of the scope.</param>
+        /// <returns><c>true</c> if the specified <paramref name="alias"/> matches a known scope, otherwise <c>false</c>.</returns>
+        public static bool ScopeExists(string alias) {
+            return Lookup.ContainsKey(alias);
         }
 
         #endregion

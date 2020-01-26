@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Http;
 using Skybrud.Social.Slack.Options.Chat;
+using Skybrud.Social.Slack.Scopes;
 
 namespace Skybrud.Social.Slack {
 
@@ -37,6 +41,10 @@ namespace Skybrud.Social.Slack {
             // Make the request to the webhook
             return request.GetResponse();
 
+        }
+
+        internal static IEnumerable<SlackScope> GetScopesFromType(Type type) {
+            return from field in type.GetRuntimeFields() where field.FieldType == typeof(SlackScope) select (SlackScope) field.GetValue(null);
         }
 
     }

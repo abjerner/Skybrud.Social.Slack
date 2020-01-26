@@ -63,7 +63,7 @@ namespace Skybrud.Social.Slack.Scopes {
         /// </summary>
         /// <returns>Array of strings representing each scope in the collection.</returns>
         public string[] ToStringArray() {
-            return (from scope in _list select scope.Name).ToArray();
+            return (from scope in _list select scope.Alias).ToArray();
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Skybrud.Social.Slack.Scopes {
         /// </summary>
         /// <returns>String of scopes separated by a comma.</returns>
         public override string ToString() {
-            return string.Join(",", from scope in _list select scope.Name);
+            return string.Join(",", from scope in _list select scope.Alias);
         }
 
         #endregion
