@@ -207,13 +207,17 @@ namespace Skybrud.Social.Slack.OAuth {
             return SlackTokenResponse.ParseResponse(response);
 
         }
-        
+
+        /// <inheritdoc />
         protected override void PrepareHttpRequest(IHttpRequest request) {
 
             // Append the "Authorization" header when an access token is present
             if (string.IsNullOrWhiteSpace(AccessToken) == false) {
                 request.Headers.Authorization = "Bearer " + AccessToken;
             }
+
+            // Append the scheme and host if not already present in the URL
+            if (request.Url.StartsWith("/api")) request.Url = "https://slack.com" + request.Url;
 
         }
 
