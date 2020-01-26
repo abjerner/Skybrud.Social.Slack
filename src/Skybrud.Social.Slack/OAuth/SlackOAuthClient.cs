@@ -53,6 +53,11 @@ namespace Skybrud.Social.Slack.OAuth {
         public SlackChannelsRawEndpoint Channels { get; }
 
         /// <summary>
+        /// Gets a reference to the raw <strong>Chat</strong> endpoint.
+        /// </summary>
+        public SlackChatRawEndpoint Chat { get; }
+
+        /// <summary>
         /// Gets a reference to the raw <strong>Teams</strong> endpoint.
         /// </summary>
         public SlackTeamsRawEndpoint Teams { get; }
@@ -74,6 +79,7 @@ namespace Skybrud.Social.Slack.OAuth {
         public SlackOAuthClient() {
             Authentication = new SlackAuthenticationRawEndpoint(this);
             Channels = new SlackChannelsRawEndpoint(this);
+            Chat = new SlackChatRawEndpoint(this);
             Teams = new SlackTeamsRawEndpoint(this);
             Users = new SlackUsersRawEndpoint(this);
         }

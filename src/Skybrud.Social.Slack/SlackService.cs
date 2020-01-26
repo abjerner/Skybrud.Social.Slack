@@ -27,6 +27,11 @@ namespace Skybrud.Social.Slack {
         public SlackChannelsEndpoint Channels { get; }
 
         /// <summary>
+        /// Gets a reference to the <strong>Chat</strong> endpoint.
+        /// </summary>
+        public SlackChatEndpoint Chat { get; }
+
+        /// <summary>
         /// Gets a reference to the <strong>Teams</strong> endpoint.
         /// </summary>
         public SlackTeamsEndpoint Teams { get; }
@@ -44,6 +49,7 @@ namespace Skybrud.Social.Slack {
             Client = client;
             Authentication = new SlackAuthenticationEndpoint(this);
             Channels = new SlackChannelsEndpoint(this);
+            Chat = new SlackChatEndpoint(this);
             Teams = new SlackTeamsEndpoint(this);
             Users = new SlackUsersEndpoint(this);
         }
