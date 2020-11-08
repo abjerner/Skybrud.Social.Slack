@@ -106,11 +106,6 @@ namespace Skybrud.Social.Slack.Models.Users {
         public bool Has2Fa { get; }
 
         /// <summary>
-        /// Gets the presence of the user.
-        /// </summary>
-        public SlackPresence Presence { get; }
-
-        /// <summary>
         /// Gets a timestamp for when the user was last updated.
         /// </summary>
         public EssentialsTime Updated { get; }
@@ -142,7 +137,6 @@ namespace Skybrud.Social.Slack.Models.Users {
             IsBot = obj.GetBoolean("is_bot");
             IsAppUser = obj.GetBoolean("is_app_user");
             Has2Fa = obj.GetBoolean("has_2fa");
-            Presence = obj.GetEnum("presence", SlackPresence.Unspecified);
             Updated = obj.GetDouble("updated", EssentialsTime.FromUnixTimestamp);
         }
 
