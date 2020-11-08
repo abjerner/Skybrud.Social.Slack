@@ -1,6 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Time;
 
 namespace Skybrud.Social.Slack.Models.Users {
     
@@ -18,6 +19,11 @@ namespace Skybrud.Social.Slack.Models.Users {
         /// Gets the ID of the user.
         /// </summary>
         public string Id { get; }
+
+        /// <summary>
+        /// Gets the ID of the team.
+        /// </summary>
+        public string TeamId { get; }
 
         /// <summary>
         /// Gets the name of the user.
@@ -88,7 +94,12 @@ namespace Skybrud.Social.Slack.Models.Users {
         /// Gets whether the user is a bot.
         /// </summary>
         public bool IsBot { get; }
-        
+
+        /// <summary>
+        /// Gets whether the user is an app user.
+        /// </summary>
+        public bool IsAppUser { get; }
+
         /// <summary>
         /// Gets whether the user has enabled 2 factor authentication.
         /// </summary>
@@ -98,6 +109,11 @@ namespace Skybrud.Social.Slack.Models.Users {
         /// Gets the presence of the user.
         /// </summary>
         public SlackPresence Presence { get; }
+
+        /// <summary>
+        /// Gets a timestamp for when the user was last updated.
+        /// </summary>
+        public EssentialsTime Updated { get; }
 
         #endregion
 
@@ -109,6 +125,7 @@ namespace Skybrud.Social.Slack.Models.Users {
         /// <param name="obj">An instance of <see cref="JObject"/> representing the object.</param>
         protected SlackUser(JObject obj) : base(obj) {
             Id = obj.GetString("id");
+            TeamId = obj.GetString("team_id");
             Name = obj.GetString("name");
             IsDeleted = obj.GetBoolean("deleted");
             Color = obj.GetString("color");
@@ -123,8 +140,10 @@ namespace Skybrud.Social.Slack.Models.Users {
             IsRestricted = obj.GetBoolean("is_restricted");
             IsUltraRestricted = obj.GetBoolean("is_ultra_restricted");
             IsBot = obj.GetBoolean("is_bot");
+            IsAppUser = obj.GetBoolean("is_app_user");
             Has2Fa = obj.GetBoolean("has_2fa");
             Presence = obj.GetEnum("presence", SlackPresence.Unspecified);
+            Updated = obj.GetDouble("updated", EssentialsTime.FromUnixTimestamp);
         }
 
         #endregion
