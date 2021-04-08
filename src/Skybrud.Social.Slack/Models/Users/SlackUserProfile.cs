@@ -216,9 +216,6 @@ namespace Skybrud.Social.Slack.Models.Users {
 
             // TODO: Add support for the "team" property
 
-            //status_text_canonical = obj.GetString("status_text_canonical");
-            //team = obj.GetString("team");
-
         }
 
         #endregion
