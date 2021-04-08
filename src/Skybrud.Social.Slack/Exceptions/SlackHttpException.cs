@@ -1,12 +1,13 @@
-using System;
+using System.Net;
 using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Http.Exceptions;
 
 namespace Skybrud.Social.Slack.Exceptions {
 
     /// <summary>
     /// Class representing an exception based on an error from the Slack API.
     /// </summary>
-    public class SlackHttpException : Exception {
+    public class SlackHttpException : SlackException, IHttpException {
 
         #region Properties
 
@@ -14,6 +15,11 @@ namespace Skybrud.Social.Slack.Exceptions {
         /// Gets a reference to the underlying <see cref="IHttpResponse"/>.
         /// </summary>
         public IHttpResponse Response { get; }
+
+        /// <summary>
+        /// Gets the status code of the response that triggered the exception.
+        /// </summary>
+        public HttpStatusCode StatusCode => Response.StatusCode;
 
         /// <summary>
         /// Gets the error returned by the Slack API.
