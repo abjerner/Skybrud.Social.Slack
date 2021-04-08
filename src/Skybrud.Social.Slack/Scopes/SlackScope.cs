@@ -158,12 +158,12 @@ namespace Skybrud.Social.Slack.Scopes {
         #region Operators
 
         /// <summary>
-        /// Adding two instances of <see cref="SlackScope"/> will result in a <see cref="SlackScopeCollection"/> containing both scopes.
+        /// Adding two instances of <see cref="SlackScope"/> will result in a <see cref="SlackScopeList"/> containing both scopes.
         /// </summary>
         /// <param name="left">The left scope.</param>
         /// <param name="right">The right scope.</param>
-        public static SlackScopeCollection operator +(SlackScope left, SlackScope right) {
-            return new SlackScopeCollection(left, right);
+        public static SlackScopeList operator +(SlackScope left, SlackScope right) {
+            return new SlackScopeList(left, right);
         }
 
         #endregion

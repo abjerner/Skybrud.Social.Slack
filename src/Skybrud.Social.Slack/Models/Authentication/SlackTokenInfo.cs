@@ -19,7 +19,7 @@ namespace Skybrud.Social.Slack.Models.Authentication {
         /// <summary>
         /// Gets a collection of the scopes the user has granted.
         /// </summary>
-        public SlackScopeCollection Scope { get; }
+        public SlackScopeList Scope { get; }
 
         /// <summary>
         /// Gets the name of the team selected by the user.
@@ -37,7 +37,7 @@ namespace Skybrud.Social.Slack.Models.Authentication {
         protected SlackTokenInfo(JObject obj) : base(obj) {
 
             // Convert the "scope" string to a collection of scopes
-            SlackScopeCollection scopes = new SlackScopeCollection();
+            SlackScopeList scopes = new SlackScopeList();
             foreach (string name in obj.GetString("scope").Split(',')) {
                 SlackScope scope = SlackScope.GetScope(name) ?? SlackScope.RegisterScope(name);
                 scopes.Add(scope);

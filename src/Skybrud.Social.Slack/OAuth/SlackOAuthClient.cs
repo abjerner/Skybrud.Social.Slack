@@ -168,7 +168,7 @@ namespace Skybrud.Social.Slack.OAuth {
         /// <param name="state">A unique state for the request.</param>
         /// <param name="scope">The scope of the application.</param>
         /// <returns>An authorization URL based on <paramref name="state"/> and <paramref name="scope"/>.</returns>
-        public string GetAuthorizationUrl(string state, SlackScopeCollection scope) {
+        public string GetAuthorizationUrl(string state, SlackScopeList scope) {
 
             if (string.IsNullOrWhiteSpace(ClientId)) throw new PropertyNotSetException(nameof(ClientId));
             if (string.IsNullOrWhiteSpace(RedirectUri)) throw new PropertyNotSetException(nameof(RedirectUri));
