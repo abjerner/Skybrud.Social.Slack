@@ -40,9 +40,9 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// <see>
         ///     <cref>https://api.slack.com/methods/users.info</cref>
         /// </see>
-        /// <returns>An instance of <see cref="SlackGetUserInfoResponse"/> representing the response.</returns>
-        public SlackGetUserInfoResponse GetInfo(string userId) {
-            return new SlackGetUserInfoResponse(Raw.GetInfo(userId));
+        /// <returns>An instance of <see cref="SlackUserResponse"/> representing the response.</returns>
+        public SlackUserResponse GetInfo(string userId) {
+            return new SlackUserResponse(Raw.GetInfo(userId));
         }
 
         /// <summary>
@@ -51,9 +51,9 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// <see>
         ///     <cref>https://api.slack.com/methods/users.list</cref>
         /// </see>
-        /// <returns>An instance of <see cref="SlackGetUserListResponse"/> representing the response.</returns>
-        public SlackGetUserListResponse GetList() {
-            return new SlackGetUserListResponse(Raw.GetList());
+        /// <returns>An instance of <see cref="SlackUserListResponse"/> representing the response.</returns>
+        public SlackUserListResponse GetList() {
+            return new SlackUserListResponse(Raw.GetList());
         }
 
         /// <summary>
@@ -63,35 +63,35 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// <see>
         ///     <cref>https://api.slack.com/methods/users.list</cref>
         /// </see>
-        /// <returns>An instance of <see cref="SlackGetUserListResponse"/> representing the response.</returns>
-        public SlackGetUserListResponse GetUsers(bool presence) {
-            return new SlackGetUserListResponse(Raw.GetList(presence));
+        /// <returns>An instance of <see cref="SlackUserListResponse"/> representing the response.</returns>
+        public SlackUserListResponse GetUsers(bool presence) {
+            return new SlackUserListResponse(Raw.GetList(presence));
         }
 
         /// <summary>
         /// Gets the presence of the authenticated user.
         /// </summary>
-        /// <returns>An instance of <see cref="SlackGetUserPresenceResponse"/> representing the response.</returns>
-        public SlackGetUserPresenceResponse GetPresence() {
-            return new SlackGetUserPresenceResponse(Raw.GetPresence());
+        /// <returns>An instance of <see cref="SlackUserPresenceResponse"/> representing the response.</returns>
+        public SlackUserPresenceResponse GetPresence() {
+            return new SlackUserPresenceResponse(Raw.GetPresence());
         }
 
         /// <summary>
         /// Gets the presence of the specified <paramref name="user"/>.
         /// </summary>
         /// <param name="user">The user.</param>
-        /// <returns>An instance of <see cref="SlackGetUserPresenceResponse"/> representing the response.</returns>
-        public SlackGetUserPresenceResponse GetPresence(string user)  {
-            return new SlackGetUserPresenceResponse(Raw.GetPresence(user));
+        /// <returns>An instance of <see cref="SlackUserPresenceResponse"/> representing the response.</returns>
+        public SlackUserPresenceResponse GetPresence(string user)  {
+            return new SlackUserPresenceResponse(Raw.GetPresence(user));
         }
 
         /// <summary>
         /// Gets the presence of the user matching the specified <paramref name="options"/>.
         /// </summary>
         /// <param name="options">The options for the request to the API.</param>
-        /// <returns>An instance of <see cref="SlackGetUserPresenceResponse"/> representing the response.</returns>
-        public SlackGetUserPresenceResponse GetPresence(SlackGetUserPresenceOptions options) {
-            return new SlackGetUserPresenceResponse(Raw.GetPresence(options));
+        /// <returns>An instance of <see cref="SlackUserPresenceResponse"/> representing the response.</returns>
+        public SlackUserPresenceResponse GetPresence(SlackGetUserPresenceOptions options) {
+            return new SlackUserPresenceResponse(Raw.GetPresence(options));
         }
 
         #endregion

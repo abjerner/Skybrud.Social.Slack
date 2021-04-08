@@ -35,24 +35,24 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// <summary>
         /// Gets information about the user's current team.
         /// </summary>
-        /// <returns>An instance of <see cref="SlackGetTeamInfoResponse"/> representing the response.</returns>
+        /// <returns>An instance of <see cref="SlackTeamResponse"/> representing the response.</returns>
         /// <see>
         ///     <cref>https://api.slack.com/methods/team.info</cref>
         /// </see>
-        public SlackGetTeamInfoResponse GetInfo() {
-            return new SlackGetTeamInfoResponse(Raw.GetInfo());
+        public SlackTeamResponse GetInfo() {
+            return new SlackTeamResponse(Raw.GetInfo());
         }
 
         /// <summary>
         /// Gets information about a team.
         /// </summary>
         /// <param name="team">The ID of the team.</param>
-        /// <returns>An instance of <see cref="SlackGetTeamInfoResponse"/> representing the response.</returns>
+        /// <returns>An instance of <see cref="SlackTeamResponse"/> representing the response.</returns>
         /// <see>
         ///     <cref>https://api.slack.com/methods/team.info</cref>
         /// </see>
-        public SlackGetTeamInfoResponse GetInfo(string team) {
-            return new SlackGetTeamInfoResponse(Raw.GetInfo(team));
+        public SlackTeamResponse GetInfo(string team) {
+            return new SlackTeamResponse(Raw.GetInfo(team));
         }
 
         #endregion

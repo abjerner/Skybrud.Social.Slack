@@ -39,9 +39,9 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// <see>
         ///     <cref>https://api.slack.com/methods/channels.info</cref>
         /// </see>
-        /// <returns>An instance of <see cref="SlackGetChannelInfoResponse"/> representing the response.</returns>
-        public SlackGetChannelInfoResponse GetInfo(string channel) {
-            return new SlackGetChannelInfoResponse(Raw.GetInfo(channel));
+        /// <returns>An instance of <see cref="SlackChannelResponse"/> representing the response.</returns>
+        public SlackChannelResponse GetInfo(string channel) {
+            return new SlackChannelResponse(Raw.GetInfo(channel));
         }
 
         /// <summary>
@@ -50,9 +50,9 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// <see>
         ///     <cref>https://api.slack.com/methods/channels.list</cref>
         /// </see>
-        /// <returns>An instance of <see cref="SlackGetChannelListResponse"/> representing the response.</returns>
-        public SlackGetChannelListResponse GetList() {
-            return new SlackGetChannelListResponse(Raw.GetList());
+        /// <returns>An instance of <see cref="SlackChannelListResponse"/> representing the response.</returns>
+        public SlackChannelListResponse GetList() {
+            return new SlackChannelListResponse(Raw.GetList());
         }
 
         #endregion

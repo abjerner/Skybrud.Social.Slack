@@ -7,13 +7,13 @@ namespace Skybrud.Social.Slack.Responses.Channels {
     /// <summary>
     /// Class representing a response with information about a Slack channel.
     /// </summary>
-    public class SlackGetChannelInfoResponse : SlackResponse<SlackChannelResponseBody> {
+    public class SlackChannelResponse : SlackResponse<SlackChannelResponseBody> {
 
         /// <summary>
         /// Initializes a new instance based on the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The raw response from the Slack API.</param>
-        public SlackGetChannelInfoResponse(IHttpResponse response) : base(response, out JObject body) {
+        public SlackChannelResponse(IHttpResponse response) : base(response, out JObject body) {
             Body = SlackChannelResponseBody.Parse(body);
         }
 

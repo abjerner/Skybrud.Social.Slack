@@ -1,20 +1,20 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Http;
-using Skybrud.Social.Slack.Models.Channels;
+using Skybrud.Social.Slack.Models.Users;
 
-namespace Skybrud.Social.Slack.Responses.Channels {
+namespace Skybrud.Social.Slack.Responses.Users {
 
     /// <summary>
     /// Class representing a response with a list of Slack users.
     /// </summary>
-    public class SlackGetChannelListResponse : SlackResponse<SlackChannelListResponseBody> {
+    public class SlackUserListResponse : SlackResponse<SlackUserListResponseBody> {
 
         /// <summary>
         /// Initializes a new instance based on the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The raw response from the Slack API.</param>
-        public SlackGetChannelListResponse(IHttpResponse response) : base(response, out JObject body) {
-            Body = SlackChannelListResponseBody.Parse(body);
+        public SlackUserListResponse(IHttpResponse response) : base(response, out JObject body) {
+            Body = SlackUserListResponseBody.Parse(body);
         }
 
     }
