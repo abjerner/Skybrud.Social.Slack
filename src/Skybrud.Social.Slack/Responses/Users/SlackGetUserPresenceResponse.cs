@@ -13,8 +13,7 @@ namespace Skybrud.Social.Slack.Responses.Users {
         /// Initializes a new instance based on the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The raw response from the Slack API.</param>
-        public SlackGetUserPresenceResponse(IHttpResponse response) : base(response) {
-            ValidateResponse(response, out JObject body);
+        public SlackGetUserPresenceResponse(IHttpResponse response) : base(response, out JObject body) {
             Body = SlackPresence.Parse(body);
         }
 

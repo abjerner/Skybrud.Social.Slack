@@ -42,7 +42,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// </see>
         /// <returns>An instance of <see cref="SlackGetUserInfoResponse"/> representing the response.</returns>
         public SlackGetUserInfoResponse GetInfo(string userId) {
-            return SlackGetUserInfoResponse.ParseResponse(Raw.GetInfo(userId));
+            return new SlackGetUserInfoResponse(Raw.GetInfo(userId));
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// </see>
         /// <returns>An instance of <see cref="SlackGetUserListResponse"/> representing the response.</returns>
         public SlackGetUserListResponse GetList() {
-            return SlackGetUserListResponse.ParseResponse(Raw.GetList());
+            return new SlackGetUserListResponse(Raw.GetList());
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// </see>
         /// <returns>An instance of <see cref="SlackGetUserListResponse"/> representing the response.</returns>
         public SlackGetUserListResponse GetUsers(bool presence) {
-            return SlackGetUserListResponse.ParseResponse(Raw.GetList(presence));
+            return new SlackGetUserListResponse(Raw.GetList(presence));
         }
 
         /// <summary>

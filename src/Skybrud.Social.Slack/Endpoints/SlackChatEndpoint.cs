@@ -39,7 +39,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// <param name="options">The options for the request to the API.</param>
         /// <returns>An instance of <see cref="SlackPostMessageResponse"/> representing the response from the API.</returns>
         public SlackPostMessageResponse PostMessage(SlackPostMessageOptions options) {
-            return SlackPostMessageResponse.Parse(Raw.PostMessage(options));
+            return new SlackPostMessageResponse(Raw.PostMessage(options));
         }
 
         #endregion

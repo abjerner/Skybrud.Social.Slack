@@ -210,7 +210,7 @@ namespace Skybrud.Social.Slack.OAuth {
             IHttpResponse response = HttpUtils.Requests.Post("https://slack.com/api/oauth.access", parameters);
 
             // Parse the response
-            return SlackTokenResponse.ParseResponse(response);
+            return new SlackTokenResponse(response);
 
         }
 

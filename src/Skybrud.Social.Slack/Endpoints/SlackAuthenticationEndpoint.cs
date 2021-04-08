@@ -37,7 +37,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// </summary>
         /// <returns>An instance of <see cref="SlackAuthenticationTestResponse"/> representing the response.</returns>
         public SlackAuthenticationTestResponse GetTest() {
-            return SlackAuthenticationTestResponse.ParseResponse(Raw.GetTest());
+            return new SlackAuthenticationTestResponse(Raw.GetTest());
         }
 
         #endregion

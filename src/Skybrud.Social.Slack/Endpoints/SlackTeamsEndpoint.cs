@@ -40,7 +40,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         ///     <cref>https://api.slack.com/methods/team.info</cref>
         /// </see>
         public SlackGetTeamInfoResponse GetInfo() {
-            return SlackGetTeamInfoResponse.ParseResponse(Raw.GetInfo());
+            return new SlackGetTeamInfoResponse(Raw.GetInfo());
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         ///     <cref>https://api.slack.com/methods/team.info</cref>
         /// </see>
         public SlackGetTeamInfoResponse GetInfo(string team) {
-            return SlackGetTeamInfoResponse.ParseResponse(Raw.GetInfo(team));
+            return new SlackGetTeamInfoResponse(Raw.GetInfo(team));
         }
 
         #endregion
