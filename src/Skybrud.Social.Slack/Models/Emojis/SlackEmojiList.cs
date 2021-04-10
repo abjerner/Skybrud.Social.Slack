@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.Slack.Models.Emojis {
     
@@ -45,7 +46,7 @@ namespace Skybrud.Social.Slack.Models.Emojis {
         /// </summary>
         /// <param name="json">An instance of <see cref="JObject"/> representing the emoji list.</param>
         protected SlackEmojiList(JObject json) : base(json) {
-            _emojis = json.Properties().ToDictionary(x => x.Name, x => x.Value<string>());
+            _emojis = json.Properties().ToDictionary(x => x.Name, x => json.GetString(x.Name));
         }
 
         #endregion
