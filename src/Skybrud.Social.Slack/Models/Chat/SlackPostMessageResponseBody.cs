@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Social.Slack.Models.Messages;
 
 namespace Skybrud.Social.Slack.Models.Chat {
 
