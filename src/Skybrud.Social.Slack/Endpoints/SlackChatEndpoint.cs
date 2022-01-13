@@ -14,7 +14,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// <summary>
         /// Gets a reference to the Slack service.
         /// </summary>
-        public SlackService Service { get; }
+        public SlackHttpService Service { get; }
 
         /// <summary>
         /// A reference to the raw endpoint.
@@ -25,7 +25,7 @@ namespace Skybrud.Social.Slack.Endpoints {
 
         #region Constructors
 
-        internal SlackChatEndpoint(SlackService service) {
+        internal SlackChatEndpoint(SlackHttpService service) {
             Service = service;
         }
 
