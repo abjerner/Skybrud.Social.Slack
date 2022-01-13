@@ -9,7 +9,7 @@ namespace Skybrud.Social.Slack.Models.Emojis {
     /// <see>
     ///     <cref>https://api.slack.com/methods/emoji.list</cref>
     /// </see>
-    public class SlackEmojiListResponseBody : SlackResponseBody {
+    public class SlackEmojiListResult : SlackResult {
 
         #region Properties
 
@@ -26,7 +26,7 @@ namespace Skybrud.Social.Slack.Models.Emojis {
         /// Initializes a new instance based on the specified <paramref name="json"/> object.
         /// </summary>
         /// <param name="json">An instance of <see cref="JObject"/> representing the response body.</param>
-        protected SlackEmojiListResponseBody(JObject json) : base(json) {
+        protected SlackEmojiListResult(JObject json) : base(json) {
             Emoji = json.GetObject("emoji", SlackEmojiList.Parse);
         }
 
@@ -35,12 +35,12 @@ namespace Skybrud.Social.Slack.Models.Emojis {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="SlackEmojiListResponseBody"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="SlackEmojiListResult"/>.
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
-        /// <returns>An instance of <see cref="SlackEmojiListResponseBody"/>.</returns>
-        public static SlackEmojiListResponseBody Parse(JObject json) {
-            return json == null ? null : new SlackEmojiListResponseBody(json);
+        /// <returns>An instance of <see cref="SlackEmojiListResult"/>.</returns>
+        public static SlackEmojiListResult Parse(JObject json) {
+            return json == null ? null : new SlackEmojiListResult(json);
         }
 
         #endregion

@@ -6,7 +6,7 @@ namespace Skybrud.Social.Slack.Models {
     /// <summary>
     /// Class representing a generic response body received from the Slack API.
     /// </summary>
-    public class SlackResponseBody : SlackObject {
+    public class SlackResult : SlackObject {
 
         #region Properties
 
@@ -23,7 +23,7 @@ namespace Skybrud.Social.Slack.Models {
         /// Initializes a new instance from the specified <paramref name="obj"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        protected SlackResponseBody(JObject obj) : base(obj) {
+        protected SlackResult(JObject obj) : base(obj) {
             IsOk = obj.GetBoolean("ok");
         }
 

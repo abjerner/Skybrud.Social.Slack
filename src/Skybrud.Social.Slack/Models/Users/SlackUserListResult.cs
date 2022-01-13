@@ -4,16 +4,16 @@ using Skybrud.Essentials.Json.Extensions;
 namespace Skybrud.Social.Slack.Models.Users {
     
     /// <summary>
-    /// Class representing a response body with information about a Slack user.
+    /// Class representing a list of Slack users (members of a Slack team).
     /// </summary>
-    public class SlackUserResponseBody : SlackResponseBody {
+    public class SlackUserListResult : SlackResult {
 
         #region Properties
 
         /// <summary>
-        /// Gets a reference to the requested user.
+        /// Gets an array with the members of the team.
         /// </summary>
-        public SlackUser User { get; }
+        public SlackUser[] Members { get; }
 
         #endregion
 
@@ -23,8 +23,8 @@ namespace Skybrud.Social.Slack.Models.Users {
         /// Initializes a new instance based on the specified <paramref name="obj"/>.
         /// </summary>
         /// <param name="obj">An instance of <see cref="JObject"/> representing the object.</param>
-        protected SlackUserResponseBody(JObject obj) : base(obj) {
-            User = obj.GetObject("user", SlackUser.Parse);
+        protected SlackUserListResult(JObject obj) : base(obj) {
+            Members = obj.GetArrayItems("members", SlackUser.Parse);
         }
 
         #endregion
@@ -32,12 +32,12 @@ namespace Skybrud.Social.Slack.Models.Users {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackUserResponseBody"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackUserListResult"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
-        /// <returns>An instance of <see cref="SlackUserResponseBody"/>.</returns>
-        public static SlackUserResponseBody Parse(JObject obj) {
-            return obj == null ? null : new SlackUserResponseBody(obj);
+        /// <returns>An instance of <see cref="SlackUserListResult"/>.</returns>
+        public static SlackUserListResult Parse(JObject obj) {
+            return obj == null ? null : new SlackUserListResult(obj);
         }
 
         #endregion

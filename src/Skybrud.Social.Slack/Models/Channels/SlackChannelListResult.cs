@@ -4,16 +4,16 @@ using Skybrud.Essentials.Json.Extensions;
 namespace Skybrud.Social.Slack.Models.Channels {
     
     /// <summary>
-    /// Class representing a the response body of a single Slack channel.
+    /// Class representing a the response body with a list of Slack channels.
     /// </summary>
-    public class SlackChannelResponseBody : SlackResponseBody {
+    public class SlackChannelListResult : SlackResult {
 
         #region Properties
 
         /// <summary>
-        /// Gets a reference to the channel from the response body.
+        /// Gets an array with the channels of the response.
         /// </summary>
-        public SlackChannel Channel { get; }
+        public SlackChannel[] Channels { get; }
 
         #endregion
 
@@ -23,8 +23,8 @@ namespace Skybrud.Social.Slack.Models.Channels {
         /// Initializes a new instance based on the specified <paramref name="obj"/>.
         /// </summary>
         /// <param name="obj">An instance of <see cref="JObject"/> representing the object.</param>
-        protected SlackChannelResponseBody(JObject obj) : base(obj) {
-            Channel = obj.GetObject("channel", SlackChannel.Parse);
+        protected SlackChannelListResult(JObject obj) : base(obj) {
+            Channels = obj.GetArrayItems("channels", SlackChannel.Parse);
         }
 
         #endregion
@@ -32,12 +32,12 @@ namespace Skybrud.Social.Slack.Models.Channels {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackChannelResponseBody"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackChannelListResult"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
-        /// <returns>An instance of <see cref="SlackChannelResponseBody"/>.</returns>
-        public static SlackChannelResponseBody Parse(JObject obj) {
-            return obj == null ? null : new SlackChannelResponseBody(obj);
+        /// <returns>An instance of <see cref="SlackChannelListResult"/>.</returns>
+        public static SlackChannelListResult Parse(JObject obj) {
+            return obj == null ? null : new SlackChannelListResult(obj);
         }
 
         #endregion

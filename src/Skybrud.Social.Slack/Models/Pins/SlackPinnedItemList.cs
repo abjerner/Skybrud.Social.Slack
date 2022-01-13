@@ -7,7 +7,7 @@ namespace Skybrud.Social.Slack.Models.Pins {
     /// <summary>
     /// Class representing a list of pinned items.
     /// </summary>
-    public class SlackPinnedItemList : SlackResponseBody {
+    public class SlackPinnedItemList : SlackResult {
 
         #region Properties
 

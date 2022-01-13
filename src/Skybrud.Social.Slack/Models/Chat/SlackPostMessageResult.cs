@@ -7,7 +7,7 @@ namespace Skybrud.Social.Slack.Models.Chat {
     /// <summary>
     /// Class representing the body of a response received when posting a new message to the Slack API.
     /// </summary>
-    public class SlackPostMessageResponseBody : SlackResponseBody {
+    public class SlackPostMessageResult : SlackResult {
 
         #region Properties
 
@@ -24,7 +24,7 @@ namespace Skybrud.Social.Slack.Models.Chat {
         /// Initializes a new instance based on the specified <paramref name="obj"/>.
         /// </summary>
         /// <param name="obj">An instance of <see cref="JObject"/> representing the object.</param>
-        protected SlackPostMessageResponseBody(JObject obj) : base(obj) {
+        protected SlackPostMessageResult(JObject obj) : base(obj) {
             Message = obj.GetObject("message", SlackMessage.Parse);
         }
 
@@ -33,12 +33,12 @@ namespace Skybrud.Social.Slack.Models.Chat {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackPostMessageResponseBody"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackPostMessageResult"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
-        /// <returns>An instance of <see cref="SlackPostMessageResponseBody"/>.</returns>
-        public static SlackPostMessageResponseBody Parse(JObject obj) {
-            return obj == null ? null : new SlackPostMessageResponseBody(obj);
+        /// <returns>An instance of <see cref="SlackPostMessageResult"/>.</returns>
+        public static SlackPostMessageResult Parse(JObject obj) {
+            return obj == null ? null : new SlackPostMessageResult(obj);
         }
 
         #endregion

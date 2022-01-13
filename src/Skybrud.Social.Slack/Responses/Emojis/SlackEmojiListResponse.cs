@@ -7,14 +7,14 @@ namespace Skybrud.Social.Slack.Responses.Emojis {
     /// <summary>
     /// Class representing a response with a list of Slack emojis.
     /// </summary>
-    public class SlackEmojiListResponse : SlackResponse<SlackEmojiListResponseBody> {
+    public class SlackEmojiListResponse : SlackResponse<SlackEmojiListResult> {
 
         /// <summary>
         /// Initializes a new instance based on the specified <paramref name="response"/>.
         /// </summary>
         /// <param name="response">The raw response from the Slack API.</param>
         public SlackEmojiListResponse(IHttpResponse response) : base(response, out JObject body) {
-            Body = SlackEmojiListResponseBody.Parse(body);
+            Body = SlackEmojiListResult.Parse(body);
         }
 
     }
