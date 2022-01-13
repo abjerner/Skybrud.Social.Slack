@@ -110,7 +110,7 @@ namespace Skybrud.Social.Slack.OAuth {
         /// <param name="clientId">The ID of the client.</param>
         /// <param name="clientSecret">The secret of the client.</param>
         public SlackOAuthClient(long clientId, string clientSecret) : this() {
-            ClientId = clientId + "";
+            ClientId = clientId.ToString();
             ClientSecret = clientSecret;
         }
 
@@ -121,7 +121,7 @@ namespace Skybrud.Social.Slack.OAuth {
         /// <param name="clientSecret">The secret of the client.</param>
         /// <param name="redirectUri">The redirect URI of the client.</param>
         public SlackOAuthClient(long clientId, string clientSecret, string redirectUri) : this() {
-            ClientId = clientId + "";
+            ClientId = clientId.ToString();
             ClientSecret = clientSecret;
             RedirectUri = redirectUri;
         }
@@ -170,7 +170,7 @@ namespace Skybrud.Social.Slack.OAuth {
                 { "state", state}
             };
 
-            return "https://slack.com/oauth/authorize?" + query;
+            return $"https://slack.com/oauth/authorize?{query}";
 
         }
 
@@ -194,7 +194,7 @@ namespace Skybrud.Social.Slack.OAuth {
                 {"scope", scope}
             };
 
-            return "https://slack.com/oauth/authorize?" + query;
+            return $"https://slack.com/oauth/authorize?{query}";
 
         }
 
@@ -231,11 +231,11 @@ namespace Skybrud.Social.Slack.OAuth {
 
             // Append the "Authorization" header when an access token is present
             if (string.IsNullOrWhiteSpace(AccessToken) == false) {
-                request.Headers.Authorization = "Bearer " + AccessToken;
+                request.Headers.Authorization = $"Bearer {AccessToken}";
             }
 
             // Append the scheme and host if not already present in the URL
-            if (request.Url.StartsWith("/api")) request.Url = "https://slack.com" + request.Url;
+            if (request.Url.StartsWith("/api")) request.Url = $"https://slack.com{request.Url}";
 
         }
 

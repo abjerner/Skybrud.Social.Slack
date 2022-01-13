@@ -29,6 +29,9 @@ namespace Skybrud.Social.Slack.Models.Messages {
 
         // x_files
 
+        /// <summary>
+        /// Gets the timestamp for when the message was posted.
+        /// </summary>
         public EssentialsTime Timestamp { get; }
 
         // team
