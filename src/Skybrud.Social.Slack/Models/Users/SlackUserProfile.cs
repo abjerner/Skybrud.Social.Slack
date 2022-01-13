@@ -53,7 +53,12 @@ namespace Skybrud.Social.Slack.Models.Users {
         /// Gets the normalized real name of the user.
         /// </summary>
         public string RealNameNormalized { get; }
-        
+
+        /// <summary>
+        /// Gets whether the user has a real name.
+        /// </summary>
+        public bool HasRealName => !string.IsNullOrWhiteSpace(RealName);
+
         /// <summary>
         /// Gets the display name of the user.
         /// </summary>
