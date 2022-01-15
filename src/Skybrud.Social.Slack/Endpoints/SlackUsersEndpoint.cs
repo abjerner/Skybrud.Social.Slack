@@ -7,6 +7,9 @@ namespace Skybrud.Social.Slack.Endpoints {
     /// <summary>
     /// Implementation of the users endpoint.
     /// </summary>
+    /// <see>
+    ///     <cref>https://api.slack.com/methods?filter=users</cref>
+    /// </see>
     public class SlackUsersEndpoint {
 
         #region Properties
@@ -57,15 +60,14 @@ namespace Skybrud.Social.Slack.Endpoints {
         }
 
         /// <summary>
-        /// Gets a list of all users in the team. This includes deleted/deactivated users.
+        /// Gets a list of all users matching the specified <paramref name="options"/>.
         /// </summary>
-        /// <param name="presence">Specifies whether presence data should be included in the output.</param>
+        /// <returns>An instance of <see cref="SlackUserListResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://api.slack.com/methods/users.list</cref>
         /// </see>
-        /// <returns>An instance of <see cref="SlackUserListResponse"/> representing the response.</returns>
-        public SlackUserListResponse GetUsers(bool presence) {
-            return new SlackUserListResponse(Raw.GetList(presence));
+        public SlackUserListResponse GetList(SlackListUserOptions options) {
+            return new SlackUserListResponse(Raw.GetList(options));
         }
 
         /// <summary>

@@ -4,10 +4,13 @@ using Skybrud.Social.Slack.OAuth;
 using Skybrud.Social.Slack.Options.Users;
 
 namespace Skybrud.Social.Slack.Endpoints.Raw {
-
+    
     /// <summary>
     /// Raw implementation of the users endpoint.
     /// </summary>
+    /// <see>
+    ///     <cref>https://api.slack.com/methods?filter=users</cref>
+    /// </see>
     public class SlackUsersRawEndpoint {
 
         #region Properties
@@ -38,7 +41,8 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         ///     <cref>https://api.slack.com/methods/users.info</cref>
         /// </see>
         public IHttpResponse GetInfo(string userId) {
-            return Client.Get("https://slack.com/api/users.info?user=" + userId);
+            if (string.IsNullOrWhiteSpace(userId)) throw new ArgumentNullException(nameof(userId));
+            return Client.Get($"/api/users.info?user={userId}");
         }
 
         /// <summary>
@@ -49,19 +53,18 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         ///     <cref>https://api.slack.com/methods/users.list</cref>
         /// </see>
         public IHttpResponse GetList() {
-            return Client.Get("https://slack.com/api/users.list");
+            return GetList(new SlackListUserOptions());
         }
 
         /// <summary>
-        /// Gets a list of all users in the team. This includes deleted/deactivated users.
+        /// Gets a list of all users matching the specified <paramref name="options"/>.
         /// </summary>
-        /// <param name="presence">Specifies whether presence data should be included in the output.</param>
         /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://api.slack.com/methods/users.list</cref>
         /// </see>
-        public IHttpResponse GetList(bool presence) {
-            return Client.Get("https://slack.com/api/users.list" + (presence ? "?presence=1" : ""));
+        public IHttpResponse GetList(SlackListUserOptions options) {
+            return Client.GetResponse(options);
         }
 
         /// <summary>

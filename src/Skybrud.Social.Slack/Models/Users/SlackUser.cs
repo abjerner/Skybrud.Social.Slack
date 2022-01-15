@@ -115,29 +115,29 @@ namespace Skybrud.Social.Slack.Models.Users {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="obj"/>.
+        /// Initializes a new instance based on the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">An instance of <see cref="JObject"/> representing the object.</param>
-        protected SlackUser(JObject obj) : base(obj) {
-            Id = obj.GetString("id");
-            TeamId = obj.GetString("team_id");
-            Name = obj.GetString("name");
-            IsDeleted = obj.GetBoolean("deleted");
-            Color = obj.GetString("color");
-            RealName = obj.GetString("real_name");
-            TimeZone = obj.GetString("tz");
-            TimeZoneLabel = obj.GetString("tz_label");
-            TimeZoneOffset = obj.GetDouble("tz_offset", TimeSpan.FromSeconds);
-            Profile = obj.GetObject("profile", SlackUserProfile.Parse);
-            IsAdmin = obj.GetBoolean("is_admin");
-            IsOwner = obj.GetBoolean("is_owner");
-            IsPrimaryOwner = obj.GetBoolean("is_primary_owner");
-            IsRestricted = obj.GetBoolean("is_restricted");
-            IsUltraRestricted = obj.GetBoolean("is_ultra_restricted");
-            IsBot = obj.GetBoolean("is_bot");
-            IsAppUser = obj.GetBoolean("is_app_user");
-            Has2Fa = obj.GetBoolean("has_2fa");
-            Updated = obj.GetDouble("updated", EssentialsTime.FromUnixTimestamp);
+        /// <param name="json">An instance of <see cref="JObject"/> representing the object.</param>
+        protected SlackUser(JObject json) : base(json) {
+            Id = json.GetString("id");
+            TeamId = json.GetString("team_id");
+            Name = json.GetString("name");
+            IsDeleted = json.GetBoolean("deleted");
+            Color = json.GetString("color");
+            RealName = json.GetString("real_name");
+            TimeZone = json.GetString("tz");
+            TimeZoneLabel = json.GetString("tz_label");
+            TimeZoneOffset = json.GetDouble("tz_offset", TimeSpan.FromSeconds);
+            Profile = json.GetObject("profile", SlackUserProfile.Parse);
+            IsAdmin = json.GetBoolean("is_admin");
+            IsOwner = json.GetBoolean("is_owner");
+            IsPrimaryOwner = json.GetBoolean("is_primary_owner");
+            IsRestricted = json.GetBoolean("is_restricted");
+            IsUltraRestricted = json.GetBoolean("is_ultra_restricted");
+            IsBot = json.GetBoolean("is_bot");
+            IsAppUser = json.GetBoolean("is_app_user");
+            Has2Fa = json.GetBoolean("has_2fa");
+            Updated = json.GetDouble("updated", EssentialsTime.FromUnixTimestamp);
         }
 
         #endregion
@@ -145,12 +145,12 @@ namespace Skybrud.Social.Slack.Models.Users {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackUser"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="SlackUser"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="SlackUser"/>.</returns>
-        public static SlackUser Parse(JObject obj) {
-            return obj == null ? null : new SlackUser(obj);
+        public static SlackUser Parse(JObject json) {
+            return json == null ? null : new SlackUser(json);
         }
 
         #endregion

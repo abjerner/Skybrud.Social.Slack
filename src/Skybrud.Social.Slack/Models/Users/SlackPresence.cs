@@ -8,7 +8,7 @@ namespace Skybrud.Social.Slack.Models.Users {
     /// <summary>
     /// Class representing the presence of a user.
     /// </summary>
-    public class SlackPresence : SlackObject {
+    public class SlackPresence : SlackResult {
 
         #region Properties
 

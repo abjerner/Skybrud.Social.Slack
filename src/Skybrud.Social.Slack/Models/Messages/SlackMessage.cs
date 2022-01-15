@@ -61,25 +61,25 @@ namespace Skybrud.Social.Slack.Models.Messages {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="obj"/>.
+        /// Initializes a new instance based on the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">An instance of <see cref="JObject"/> representing the object.</param>
-        protected SlackMessage(JObject obj) : base(obj) {
+        /// <param name="json">An instance of <see cref="JObject"/> representing the object.</param>
+        protected SlackMessage(JObject json) : base(json) {
             // TODO: Add support for the "type" property
-            Text = obj.GetString("text");
+            Text = json.GetString("text");
             // TODO: Add support for the "files" property
             // TODO: Add support for the "upload" property
-            User = obj.GetString("user");
+            User = json.GetString("user");
             // TODO: Add support for the "display_as_bot" property
             // TODO: Add support for the "x_files" property
-            Timestamp = obj.GetDouble("ts", EssentialsTime.FromUnixTimestamp);
+            Timestamp = json.GetDouble("ts", EssentialsTime.FromUnixTimestamp);
             // TODO: Add support for the "attachments" property
             // TODO: Add support for the "blocks" property
             // TODO: Add support for the "thread_ts" property
             // TODO: Add support for the "parent_user_id" property
-            PinnedTo = obj.GetStringArray("pinned_to");
+            PinnedTo = json.GetStringArray("pinned_to");
             // TODO: Add support for the "reactions" property
-            Permalink = obj.GetString("permalink");
+            Permalink = json.GetString("permalink");
         }
 
         #endregion
@@ -87,12 +87,12 @@ namespace Skybrud.Social.Slack.Models.Messages {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackMessage"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="SlackMessage"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="SlackMessage"/>.</returns>
-        public static SlackMessage Parse(JObject obj) {
-            return obj == null ? null : new SlackMessage(obj);
+        public static SlackMessage Parse(JObject json) {
+            return json == null ? null : new SlackMessage(json);
         }
 
         #endregion

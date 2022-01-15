@@ -6,6 +6,9 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
     /// <summary>
     /// Raw implementation of the <strong>Emojis</strong> endpoint.
     /// </summary>
+    /// <see>
+    ///     <cref>https://api.slack.com/methods?filter=emoji</cref>
+    /// </see>
     public class SlackEmojisRawEndpoint {
 
         #region Properties

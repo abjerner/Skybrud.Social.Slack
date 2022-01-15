@@ -20,11 +20,11 @@ namespace Skybrud.Social.Slack.Models.Teams {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="obj"/>.
+        /// Initializes a new instance based on the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">An instance of <see cref="JObject"/> representing the object.</param>
-        protected SlackTeamResult(JObject obj) : base(obj) {
-            Team = obj.GetObject("team", SlackTeam.Parse);
+        /// <param name="json">An instance of <see cref="JObject"/> representing the object.</param>
+        protected SlackTeamResult(JObject json) : base(json) {
+            Team = json.GetObject("team", SlackTeam.Parse);
         }
 
         #endregion
@@ -32,12 +32,12 @@ namespace Skybrud.Social.Slack.Models.Teams {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackTeamResult"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="SlackTeamResult"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="SlackTeamResult"/>.</returns>
-        public static SlackTeamResult Parse(JObject obj) {
-            return obj == null ? null : new SlackTeamResult(obj);
+        public static SlackTeamResult Parse(JObject json) {
+            return json == null ? null : new SlackTeamResult(json);
         }
 
         #endregion

@@ -40,15 +40,15 @@ namespace Skybrud.Social.Slack.Models.Teams {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="obj"/>.
+        /// Initializes a new instance based on the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">An instance of <see cref="JObject"/> representing the object.</param>
-        protected SlackTeam(JObject obj) : base(obj) {
-            Id = obj.GetString("id");
-            Name = obj.GetString("name");
-            Domain = obj.GetString("domain");
-            EmailDomain = obj.GetString("email_domain");
-            Icon = obj.GetObject("icon", SlackTeamIcon.Parse);
+        /// <param name="json">An instance of <see cref="JObject"/> representing the object.</param>
+        protected SlackTeam(JObject json) : base(json) {
+            Id = json.GetString("id");
+            Name = json.GetString("name");
+            Domain = json.GetString("domain");
+            EmailDomain = json.GetString("email_domain");
+            Icon = json.GetObject("icon", SlackTeamIcon.Parse);
         }
 
         #endregion
@@ -56,12 +56,12 @@ namespace Skybrud.Social.Slack.Models.Teams {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackTeam"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="SlackTeam"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="SlackTeam"/>.</returns>
-        public static SlackTeam Parse(JObject obj) {
-            return obj == null ? null : new SlackTeam(obj);
+        public static SlackTeam Parse(JObject json) {
+            return json == null ? null : new SlackTeam(json);
         }
 
         #endregion

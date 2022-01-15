@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Http;
+using Skybrud.Essentials.Strings;
 using Skybrud.Social.Slack.Options.Chat;
 using Skybrud.Social.Slack.Scopes;
 
@@ -45,6 +46,17 @@ namespace Skybrud.Social.Slack {
 
         internal static IEnumerable<SlackScope> GetScopesFromType(Type type) {
             return from field in type.GetRuntimeFields() where field.FieldType == typeof(SlackScope) select (SlackScope) field.GetValue(null);
+        }
+
+        /// <summary>
+        /// Converts the specified enum values to a lower case string with words separated by underscores. If values
+        /// contains more than one enum value, the names will be separated by commas.
+        /// </summary>
+        /// <typeparam name="T">The type of the enum.</typeparam>
+        /// <param name="values">The enum values to be converted.</param>
+        /// <returns>The converted string.</returns>
+        public static string ToString<T>(IEnumerable<T> values) where T : Enum {
+            return StringUtils.ToUnderscore(values);
         }
 
     }

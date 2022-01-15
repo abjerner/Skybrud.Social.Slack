@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json;
 using Skybrud.Essentials.Strings;
+using Skybrud.Essentials.Time;
 using Skybrud.Social.Slack.Models.Common;
 
 namespace Skybrud.Social.Slack.Models {
@@ -13,10 +14,10 @@ namespace Skybrud.Social.Slack.Models {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance from the specified <paramref name="obj"/>.
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        protected SlackObject(JObject obj) : base(obj) { }
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
+        protected SlackObject(JObject json) : base(json) { }
 
         #endregion
 
@@ -36,6 +37,15 @@ namespace Skybrud.Social.Slack.Models {
             return SlackBoolean.Unspecified;
 
         }
+
+        /// <summary>
+        /// Parses the specified UNIX timestamp <paramref name="value"/> into a corresponding <see cref="EssentialsTime"/> instance. If <paramref name="value"/> is lower than or equal to <c>0</c>, <c>null</c> is returned instead.
+        /// </summary>
+        /// <param name="value">The UNIX timestamp value.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public EssentialsTime ParseUnixTimestamp(long value) {
+            return value < 1 ? null : EssentialsTime.FromUnixTimestamp(value);
+        } 
 
         #endregion
 

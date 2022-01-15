@@ -3,10 +3,13 @@ using Skybrud.Essentials.Http;
 using Skybrud.Social.Slack.OAuth;
 
 namespace Skybrud.Social.Slack.Endpoints.Raw {
-
+    
     /// <summary>
     /// Raw implementation of the <strong>Teams</strong> endpoint.
     /// </summary>
+    /// <see>
+    ///     <cref>https://api.slack.com/methods?filter=team</cref>
+    /// </see>
     public class SlackTeamsRawEndpoint {
 
         #region Properties
@@ -36,7 +39,7 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         ///     <cref>https://api.slack.com/methods/team.info</cref>
         /// </see>
         public IHttpResponse GetInfo() {
-            return Client.Get("https://slack.com/api/team.info");
+            return Client.Get("/api/team.info");
         }
 
         /// <summary>
@@ -49,7 +52,7 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         /// </see>
         public IHttpResponse GetInfo(string team) {
             if (string.IsNullOrWhiteSpace(team)) throw new ArgumentNullException(nameof(team));
-            return Client.Get("https://slack.com/api/team.info?team=" + team);
+            return Client.Get($"/api/team.info?team={team}");
         }
 
         #endregion

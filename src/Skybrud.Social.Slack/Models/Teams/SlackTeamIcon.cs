@@ -60,19 +60,19 @@ namespace Skybrud.Social.Slack.Models.Teams {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="obj"/>.
+        /// Initializes a new instance based on the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">An instance of <see cref="JObject"/> representing the object.</param>
-        protected SlackTeamIcon(JObject obj) : base(obj) {
-            Image34 = obj.GetString("image_34");
-            Image44 = obj.GetString("image_44");
-            Image68 = obj.GetString("image_68");
-            Image88 = obj.GetString("image_88");
-            Image102 = obj.GetString("image_102");
-            Image132 = obj.GetString("image_132");
-            Image230 = obj.GetString("image_230");
-            ImageOriginal = obj.GetString("image_original");
-            IsImageDefault = obj.GetBoolean("image_default");
+        /// <param name="json">An instance of <see cref="JObject"/> representing the object.</param>
+        protected SlackTeamIcon(JObject json) : base(json) {
+            Image34 = json.GetString("image_34");
+            Image44 = json.GetString("image_44");
+            Image68 = json.GetString("image_68");
+            Image88 = json.GetString("image_88");
+            Image102 = json.GetString("image_102");
+            Image132 = json.GetString("image_132");
+            Image230 = json.GetString("image_230");
+            ImageOriginal = json.GetString("image_original");
+            IsImageDefault = json.GetBoolean("image_default");
         }
 
         #endregion
@@ -80,12 +80,12 @@ namespace Skybrud.Social.Slack.Models.Teams {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackTeamIcon"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="SlackTeamIcon"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="SlackTeamIcon"/>.</returns>
-        public static SlackTeamIcon Parse(JObject obj) {
-            return obj == null ? null : new SlackTeamIcon(obj);
+        public static SlackTeamIcon Parse(JObject json) {
+            return json == null ? null : new SlackTeamIcon(json);
         }
 
         #endregion

@@ -126,29 +126,29 @@ namespace Skybrud.Social.Slack.Models.Channels {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="obj"/>.
+        /// Initializes a new instance based on the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">An instance of <see cref="JObject"/> representing the object.</param>
-        protected SlackChannel(JObject obj) : base(obj) {
-            Id = obj.GetString("id");
-            Name = obj.GetString("name");
-            IsChannel = obj.GetBoolean("is_channel");
-            Created = obj.GetDouble("created", EssentialsTime.FromUnixTimestamp);
-            IsArchived = obj.GetBoolean("is_archived");
-            IsGeneral = obj.GetBoolean("is_general");
+        /// <param name="json">An instance of <see cref="JObject"/> representing the object.</param>
+        protected SlackChannel(JObject json) : base(json) {
+            Id = json.GetString("id");
+            Name = json.GetString("name");
+            IsChannel = json.GetBoolean("is_channel");
+            Created = json.GetInt64("created", EssentialsTime.FromUnixTimestamp);
+            IsArchived = json.GetBoolean("is_archived");
+            IsGeneral = json.GetBoolean("is_general");
             // TODO: Add support for the "unlinked" property
-            Creator = obj.GetString("creator");
-            NameNormalized = obj.GetString("name_normalized");
-            IsShared = obj.GetBoolean("is_shared");
-            IsOrgShared = obj.GetBoolean("is_org_shared");
-            IsMember = obj.GetBoolean("is_member");
-            IsPrivate = obj.GetBoolean("is_private");
-            IsMpim = obj.GetBoolean("is_mpim");
-            Members = obj.GetStringArray("members");
-            Topic = obj.GetObject("topic", SlackChannelTopic.Parse);
-            Purpose = obj.GetObject("purpose", SlackChannelPurpose.Parse);
-            PreviousNames = obj.GetStringArray("previous_names");
-            NumMembers = obj.GetInt64("num_members");
+            Creator = json.GetString("creator");
+            NameNormalized = json.GetString("name_normalized");
+            IsShared = json.GetBoolean("is_shared");
+            IsOrgShared = json.GetBoolean("is_org_shared");
+            IsMember = json.GetBoolean("is_member");
+            IsPrivate = json.GetBoolean("is_private");
+            IsMpim = json.GetBoolean("is_mpim");
+            Members = json.GetStringArray("members");
+            Topic = json.GetObject("topic", SlackChannelTopic.Parse);
+            Purpose = json.GetObject("purpose", SlackChannelPurpose.Parse);
+            PreviousNames = json.GetStringArray("previous_names");
+            NumMembers = json.GetInt64("num_members");
         }
 
         #endregion
@@ -156,12 +156,12 @@ namespace Skybrud.Social.Slack.Models.Channels {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackChannel"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="SlackChannel"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="SlackChannel"/>.</returns>
-        public static SlackChannel Parse(JObject obj) {
-            return obj == null ? null : new SlackChannel(obj);
+        public static SlackChannel Parse(JObject json) {
+            return json == null ? null : new SlackChannel(json);
         }
 
         #endregion

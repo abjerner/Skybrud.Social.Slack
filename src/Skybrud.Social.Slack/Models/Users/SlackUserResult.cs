@@ -20,11 +20,11 @@ namespace Skybrud.Social.Slack.Models.Users {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="obj"/>.
+        /// Initializes a new instance based on the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">An instance of <see cref="JObject"/> representing the object.</param>
-        protected SlackUserResult(JObject obj) : base(obj) {
-            User = obj.GetObject("user", SlackUser.Parse);
+        /// <param name="json">An instance of <see cref="JObject"/> representing the object.</param>
+        protected SlackUserResult(JObject json) : base(json) {
+            User = json.GetObject("user", SlackUser.Parse);
         }
 
         #endregion
@@ -32,12 +32,12 @@ namespace Skybrud.Social.Slack.Models.Users {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackUserResult"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="SlackUserResult"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="SlackUserResult"/>.</returns>
-        public static SlackUserResult Parse(JObject obj) {
-            return obj == null ? null : new SlackUserResult(obj);
+        public static SlackUserResult Parse(JObject json) {
+            return json == null ? null : new SlackUserResult(json);
         }
 
         #endregion

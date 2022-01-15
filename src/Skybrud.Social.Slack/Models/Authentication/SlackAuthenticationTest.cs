@@ -6,7 +6,7 @@ namespace Skybrud.Social.Slack.Models.Authentication {
     /// <summary>
     /// Class with brief information about the authed user.
     /// </summary>
-    public class SlackAuthenticationTest : SlackObject {
+    public class SlackAuthenticationTest : SlackResult {
 
         #region Properties
 
@@ -35,20 +35,26 @@ namespace Skybrud.Social.Slack.Models.Authentication {
         /// </summary>
         public string UserId { get; }
 
+        /// <summary>
+        /// Gets whether the user is part of an enterprise install.
+        /// </summary>
+        public bool IsEnterpriseInstall { get; }
+
         #endregion
 
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="obj"/>.
+        /// Initializes a new instance based on the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">An instance of <see cref="JObject"/> representing the object.</param>
-        protected SlackAuthenticationTest(JObject obj) : base(obj) {
-            Url = obj.GetString("url");
-            Team = obj.GetString("team");
-            User = obj.GetString("user");
-            TeamId = obj.GetString("team_id");
-            UserId = obj.GetString("user_id");
+        /// <param name="json">An instance of <see cref="JObject"/> representing the object.</param>
+        protected SlackAuthenticationTest(JObject json) : base(json) {
+            Url = json.GetString("url");
+            Team = json.GetString("team");
+            User = json.GetString("user");
+            TeamId = json.GetString("team_id");
+            UserId = json.GetString("user_id");
+            IsEnterpriseInstall = json.GetBoolean("is_enterprise_install");
         }
 
         #endregion
@@ -56,12 +62,12 @@ namespace Skybrud.Social.Slack.Models.Authentication {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackAuthenticationTest"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="SlackAuthenticationTest"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>An instance of <see cref="SlackAuthenticationTest"/>.</returns>
-        public static SlackAuthenticationTest Parse(JObject obj) {
-            return obj == null ? null : new SlackAuthenticationTest(obj);
+        public static SlackAuthenticationTest Parse(JObject json) {
+            return json == null ? null : new SlackAuthenticationTest(json);
         }
 
         #endregion

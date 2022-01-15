@@ -32,6 +32,11 @@ namespace Skybrud.Social.Slack {
         public SlackChatEndpoint Chat { get; }
 
         /// <summary>
+        /// Gets a reference to the <strong>Conversations</strong> endpoint.
+        /// </summary>
+        public SlackConversationsEndpoint Conversations { get; }
+
+        /// <summary>
         /// Gets a reference to the <strong>Emojis</strong> endpoint.
         /// </summary>
         public SlackEmojisEndpoint Emojis { get; }
@@ -55,6 +60,7 @@ namespace Skybrud.Social.Slack {
             Authentication = new SlackAuthenticationEndpoint(this);
             Channels = new SlackChannelsEndpoint(this);
             Chat = new SlackChatEndpoint(this);
+            Conversations = new SlackConversationsEndpoint(this);
             Emojis = new SlackEmojisEndpoint(this);
             Teams = new SlackTeamsEndpoint(this);
             Users = new SlackUsersEndpoint(this);

@@ -31,21 +31,21 @@ namespace Skybrud.Social.Slack.Models.Authentication {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="obj"/>.
+        /// Initializes a new instance based on the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">An instance of <see cref="JObject"/> representing the object.</param>
-        protected SlackTokenInfo(JObject obj) : base(obj) {
+        /// <param name="json">An instance of <see cref="JObject"/> representing the object.</param>
+        protected SlackTokenInfo(JObject json) : base(json) {
 
             // Convert the "scope" string to a collection of scopes
             SlackScopeList scopes = new SlackScopeList();
-            foreach (string name in obj.GetString("scope").Split(',')) {
+            foreach (string name in json.GetString("scope").Split(',')) {
                 SlackScope scope = SlackScope.GetScope(name) ?? SlackScope.RegisterScope(name);
                 scopes.Add(scope);
             }
 
-            AccessToken = obj.GetString("access_token");
+            AccessToken = json.GetString("access_token");
             Scope = scopes;
-            TeamName = obj.GetString("team_name");
+            TeamName = json.GetString("team_name");
 
         }
 
@@ -54,12 +54,12 @@ namespace Skybrud.Social.Slack.Models.Authentication {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackTokenInfo"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="SlackTokenInfo"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="Newtonsoft.Json.Linq.JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="Newtonsoft.Json.Linq.JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="SlackTokenInfo"/>.</returns>
-        public static SlackTokenInfo Parse(JObject obj) {
-            return obj == null ? null : new SlackTokenInfo(obj);
+        public static SlackTokenInfo Parse(JObject json) {
+            return json == null ? null : new SlackTokenInfo(json);
         }
 
         #endregion

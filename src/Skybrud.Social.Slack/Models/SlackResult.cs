@@ -20,11 +20,11 @@ namespace Skybrud.Social.Slack.Models {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance from the specified <paramref name="obj"/>.
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        protected SlackResult(JObject obj) : base(obj) {
-            IsOk = obj.GetBoolean("ok");
+        /// <param name="json">The instance of <see cref="JObject"/> to be parsed.</param>
+        protected SlackResult(JObject json) : base(json) {
+            IsOk = json.GetBoolean("ok");
         }
 
         #endregion

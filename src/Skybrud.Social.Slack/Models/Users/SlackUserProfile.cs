@@ -180,42 +180,42 @@ namespace Skybrud.Social.Slack.Models.Users {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="obj"/>.
+        /// Initializes a new instance based on the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">An instance of <see cref="JObject"/> representing the object.</param>
-        protected SlackUserProfile(JObject obj) : base(obj) {
+        /// <param name="json">An instance of <see cref="JObject"/> representing the object.</param>
+        protected SlackUserProfile(JObject json) : base(json) {
             
-            Title = obj.GetString("title");
-            Phone = obj.GetString("phone");
-            Skype = obj.GetString("skype");
+            Title = json.GetString("title");
+            Phone = json.GetString("phone");
+            Skype = json.GetString("skype");
 
-            RealName = obj.GetString("real_name");
-            RealNameNormalized = obj.GetString("real_name_normalized");
+            RealName = json.GetString("real_name");
+            RealNameNormalized = json.GetString("real_name_normalized");
 
-            DisplayName = obj.GetString("display_name");
-            DisplayNameNormalized = obj.GetString("display_name_normalized");
+            DisplayName = json.GetString("display_name");
+            DisplayNameNormalized = json.GetString("display_name_normalized");
 
             // TODO: Add support for the "fields" property
 
-            StatusText = obj.GetString("status_text");
-            StatusEmoji = obj.GetString("status_emoji");
-            StatusExpiration = obj.GetInt32("status_expiration", x => x == 0 ? null : EssentialsTime.FromUnixTimestamp(x));
+            StatusText = json.GetString("status_text");
+            StatusEmoji = json.GetString("status_emoji");
+            StatusExpiration = json.GetInt32("status_expiration", x => x == 0 ? null : EssentialsTime.FromUnixTimestamp(x));
 
-            AvatarHash = obj.GetString("avatar_hash");
-            ImageOriginal = obj.GetString("image_original");
-            IsCustomImage = obj.GetBoolean("is_custom_image");
+            AvatarHash = json.GetString("avatar_hash");
+            ImageOriginal = json.GetString("image_original");
+            IsCustomImage = json.GetBoolean("is_custom_image");
             
-            Email = obj.GetString("email");
-            FirstName = obj.GetString("first_name");
-            LastName = obj.GetString("last_name");
+            Email = json.GetString("email");
+            FirstName = json.GetString("first_name");
+            LastName = json.GetString("last_name");
 
-            Image24 = obj.GetString("image_24");
-            Image32 = obj.GetString("image_32");
-            Image48 = obj.GetString("image_48");
-            Image72 = obj.GetString("image_72");
-            Image192 = obj.GetString("image_192");
-            Image512 = obj.GetString("image_512");
-            Image1024 = obj.GetString("image_1024");
+            Image24 = json.GetString("image_24");
+            Image32 = json.GetString("image_32");
+            Image48 = json.GetString("image_48");
+            Image72 = json.GetString("image_72");
+            Image192 = json.GetString("image_192");
+            Image512 = json.GetString("image_512");
+            Image1024 = json.GetString("image_1024");
 
             // TODO: Add support for the "status_text_canonical" property
 
@@ -228,12 +228,12 @@ namespace Skybrud.Social.Slack.Models.Users {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="SlackUserProfile"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="SlackUserProfile"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="SlackUserProfile"/>.</returns>
-        public static SlackUserProfile Parse(JObject obj) {
-            return obj == null ? null : new SlackUserProfile(obj);
+        public static SlackUserProfile Parse(JObject json) {
+            return json == null ? null : new SlackUserProfile(json);
         }
 
         #endregion

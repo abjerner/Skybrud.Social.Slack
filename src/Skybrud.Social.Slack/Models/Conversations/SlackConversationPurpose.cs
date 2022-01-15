@@ -2,12 +2,12 @@
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
 
-namespace Skybrud.Social.Slack.Models.Channels {
+namespace Skybrud.Social.Slack.Models.Conversations {
     
     /// <summary>
-    /// Class representing the purpose a Slack channel.
+    /// Class representing the purpose a Slack conversation.
     /// </summary>
-    public class SlackChannelPurpose : SlackObject {
+    public class SlackConversationPurpose : SlackObject {
 
         #region Properties
 
@@ -34,10 +34,10 @@ namespace Skybrud.Social.Slack.Models.Channels {
         /// Initializes a new instance based on the specified <paramref name="json"/> object.
         /// </summary>
         /// <param name="json">An instance of <see cref="JObject"/> representing the object.</param>
-        protected SlackChannelPurpose(JObject json) : base(json) {
+        protected SlackConversationPurpose(JObject json) : base(json) {
             Value = json.GetString("value");
             Creator = json.GetString("creator");
-            LastSet = json.GetDouble("last_set", x => x < 1 ? null : EssentialsTime.FromUnixTimestamp(x));
+            LastSet = json.GetInt64("last_set", ParseUnixTimestamp);
         }
 
         #endregion
@@ -45,12 +45,12 @@ namespace Skybrud.Social.Slack.Models.Channels {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="SlackChannelPurpose"/>.
+        /// Parses the specified <paramref name="json"/> object into an instance of <see cref="SlackConversationPurpose"/>.
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
-        /// <returns>An instance of <see cref="SlackChannelPurpose"/>.</returns>
-        public static SlackChannelPurpose Parse(JObject json) {
-            return json == null ? null : new SlackChannelPurpose(json);
+        /// <returns>An instance of <see cref="SlackConversationPurpose"/>.</returns>
+        public static SlackConversationPurpose Parse(JObject json) {
+            return json == null ? null : new SlackConversationPurpose(json);
         }
 
         #endregion

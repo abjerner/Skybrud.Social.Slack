@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Http;
+﻿using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
@@ -24,7 +23,7 @@ namespace Skybrud.Social.Slack.Options.Users {
         /// <summary>
         /// Initializes a new instance with default options.
         /// </summary>
-        public SlackGetUserPresenceOptions() {}
+        public SlackGetUserPresenceOptions() { }
 
         /// <summary>
         /// Initializes a new instance based on the specified <paramref name="user"/>.
