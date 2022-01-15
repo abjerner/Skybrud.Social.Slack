@@ -4,7 +4,7 @@ using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Social.Slack.Options.Conversations {
-    
+
     /// <summary>
     /// Class representing the options for getting information about a Slack conversations.
     /// </summary>
@@ -19,12 +19,12 @@ namespace Skybrud.Social.Slack.Options.Conversations {
         /// Gets or sets the ID of the conversation/channel.
         /// </summary>
         public string ConversationId { get; set; }
-        
+
         /// <summary>
         /// Gets or sets whether to receive the locale for this conversation. Default is <c>false</c>.
         /// </summary>
         public bool IncludeLocale { get; set; }
-        
+
         /// <summary>
         /// Gets or sets whether to include the member count for the specified conversation. Default is <c>false</c>.
         /// </summary>
@@ -38,7 +38,7 @@ namespace Skybrud.Social.Slack.Options.Conversations {
         /// Initializes a new instance with default options.
         /// </summary>
         public SlackGetConversationOptions() { }
-        
+
         /// <summary>
         /// Initializes a new instance with based on the specified <paramref name="conversationId"/>.
         /// </summary>

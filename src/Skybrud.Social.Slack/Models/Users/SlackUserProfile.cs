@@ -3,7 +3,7 @@ using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
 
 namespace Skybrud.Social.Slack.Models.Users {
-    
+
     /// <summary>
     /// Class representing the profile part of a <see cref="SlackUser"/>.
     /// </summary>
@@ -18,7 +18,7 @@ namespace Skybrud.Social.Slack.Models.Users {
         /// Gets the job title of the user, or an empty string if not specified.
         /// </summary>
         public string Title { get; }
-        
+
         /// <summary>
         /// Gets whether the user has specified a job title.
         /// </summary>
@@ -78,7 +78,7 @@ namespace Skybrud.Social.Slack.Models.Users {
         /// Gets the status text of the user.
         /// </summary>
         public string StatusText { get; }
-        
+
         /// <summary>
         /// Gets whether the user has specified a status text.
         /// </summary>
@@ -113,7 +113,7 @@ namespace Skybrud.Social.Slack.Models.Users {
         /// Gets whether the user upload a custom profile image.
         /// </summary>
         public bool IsCustomImage { get; }
-        
+
         /// <summary>
         /// Gets the email address of the user.
         /// </summary>
@@ -184,7 +184,7 @@ namespace Skybrud.Social.Slack.Models.Users {
         /// </summary>
         /// <param name="json">An instance of <see cref="JObject"/> representing the object.</param>
         protected SlackUserProfile(JObject json) : base(json) {
-            
+
             Title = json.GetString("title");
             Phone = json.GetString("phone");
             Skype = json.GetString("skype");
@@ -204,7 +204,7 @@ namespace Skybrud.Social.Slack.Models.Users {
             AvatarHash = json.GetString("avatar_hash");
             ImageOriginal = json.GetString("image_original");
             IsCustomImage = json.GetBoolean("is_custom_image");
-            
+
             Email = json.GetString("email");
             FirstName = json.GetString("first_name");
             LastName = json.GetString("last_name");

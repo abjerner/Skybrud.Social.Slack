@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.Slack.Models.Channels {
-    
+
     /// <summary>
     /// Class representing a the response body with a list of Slack channels.
     /// </summary>

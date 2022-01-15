@@ -4,7 +4,7 @@ using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
 
 namespace Skybrud.Social.Slack.Models.Users {
-    
+
     /// <summary>
     /// Class representing a Slack user.
     /// </summary>
@@ -69,12 +69,12 @@ namespace Skybrud.Social.Slack.Models.Users {
         /// Gets whether the user is an admin of the current team.
         /// </summary>
         public bool IsAdmin { get; }
-        
+
         /// <summary>
         /// Gets whether the user is an owner of the current team.
         /// </summary>
         public bool IsOwner { get; }
-        
+
         /// <summary>
         /// Gets whether the user is the primary user of the current team.
         /// </summary>
@@ -89,7 +89,7 @@ namespace Skybrud.Social.Slack.Models.Users {
         /// Gets whether the user is restricted to a single channel within the current team.
         /// </summary>
         public bool IsUltraRestricted { get; }
-        
+
         /// <summary>
         /// Gets whether the user is a bot.
         /// </summary>

@@ -3,7 +3,7 @@ using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Social.Slack.Options.Users {
-    
+
     /// <summary>
     /// Class representing the options to get the presence of a Slack user.
     /// </summary>

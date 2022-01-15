@@ -1,5 +1,5 @@
 ﻿namespace Skybrud.Social.Slack.Models.Common {
-    
+
     /// <summary>
     /// Enum class representing a boolean value that may be either <see cref="Unspecified"/>, <see cref="True"/> or <see cref="False"/>.
     /// </summary>

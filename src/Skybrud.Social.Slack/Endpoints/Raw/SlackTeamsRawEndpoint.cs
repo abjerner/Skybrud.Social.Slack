@@ -3,7 +3,7 @@ using Skybrud.Essentials.Http;
 using Skybrud.Social.Slack.OAuth;
 
 namespace Skybrud.Social.Slack.Endpoints.Raw {
-    
+
     /// <summary>
     /// Raw implementation of the <strong>Teams</strong> endpoint.
     /// </summary>

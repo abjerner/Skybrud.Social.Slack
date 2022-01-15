@@ -3,7 +3,7 @@ using Skybrud.Social.Slack.Endpoints;
 using Skybrud.Social.Slack.OAuth;
 
 namespace Skybrud.Social.Slack {
-    
+
     /// <summary>
     /// Service implementation of the Slack API.
     /// </summary>

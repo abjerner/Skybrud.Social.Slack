@@ -14,7 +14,7 @@ namespace Skybrud.Social.Slack {
     /// Class with various utility and helper methods for working with the Slack API.
     /// </summary>
     public static class SlackUtils {
-        
+
         /// <summary>
         /// Posts a message to the specified <paramref name="webhookUrl"/>.
         /// </summary>
@@ -35,7 +35,7 @@ namespace Skybrud.Social.Slack {
                 Method = HttpMethod.Post,
                 ContentType = "application/x-www-form-urlencoded"
             };
-            
+
             // Append the message to the POST body
             request.PostData.Add("payload", JsonConvert.SerializeObject(options));
 

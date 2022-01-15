@@ -2,14 +2,14 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.Slack.Models.Conversations {
-    
+
     /// <summary>
     /// Class representing a list of Slack conversations.
     /// </summary>
     public class SlackConversationListResult : SlackListResult {
 
         #region Properties
-        
+
         /// <summary>
         /// Gets an array with the channels/conversations of the team.
         /// </summary>

@@ -3,7 +3,7 @@ using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Social.Slack.Options.Users {
-    
+
     /// <summary>
     /// Options for getting a list of users.
     /// </summary>
@@ -39,7 +39,7 @@ namespace Skybrud.Social.Slack.Options.Users {
         /// Initializes a new instance with default options.
         /// </summary>
         public SlackListUserOptions() { }
-        
+
         /// <summary>
         /// Initializes a new instance with based on the specified <paramref name="cursor"/>. and <paramref name="limit"/>.
         /// </summary>

@@ -6,7 +6,7 @@ using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Social.Slack.Options.Chat {
-    
+
     /// <summary>
     /// Options for posting a message to a Slack channel.
     /// </summary>
@@ -97,10 +97,10 @@ namespace Skybrud.Social.Slack.Options.Chat {
 
         /// <inheritdoc />
         public IHttpRequest GetRequest() {
-            
+
             if (string.IsNullOrWhiteSpace(Channel)) throw new PropertyNotSetException(nameof(Channel));
             if (string.IsNullOrWhiteSpace(Text)) throw new PropertyNotSetException(nameof(Text));
-            
+
             // Get the JSON for the request body
             JObject body = JObject.FromObject(this);
 

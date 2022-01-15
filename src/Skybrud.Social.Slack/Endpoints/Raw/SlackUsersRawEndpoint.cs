@@ -4,7 +4,7 @@ using Skybrud.Social.Slack.OAuth;
 using Skybrud.Social.Slack.Options.Users;
 
 namespace Skybrud.Social.Slack.Endpoints.Raw {
-    
+
     /// <summary>
     /// Raw implementation of the users endpoint.
     /// </summary>
@@ -80,7 +80,7 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         /// </summary>
         /// <param name="user">The user.</param>
         /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
-        public IHttpResponse GetPresence(string user)  {
+        public IHttpResponse GetPresence(string user) {
             if (string.IsNullOrWhiteSpace(user)) throw new ArgumentNullException(nameof(user));
             return GetPresence(new SlackGetUserPresenceOptions(user));
         }
@@ -91,7 +91,7 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         /// <param name="options">The options for the request to the API.</param>
         /// <returns>An instance of <see cref="IHttpResponse"/> representing the raw response.</returns>
         public IHttpResponse GetPresence(SlackGetUserPresenceOptions options) {
-            if (options == null) throw new ArgumentNullException(nameof(options)); 
+            if (options == null) throw new ArgumentNullException(nameof(options));
             return Client.GetResponse(options);
         }
 

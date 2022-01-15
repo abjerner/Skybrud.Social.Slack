@@ -2,14 +2,14 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.Slack.Models.Conversations {
-    
+
     /// <summary>
     /// Class with information about a Slack conversations.
     /// </summary>
     public class SlackConversationResult : SlackResult {
 
         #region Properties
-        
+
         /// <summary>
         /// Gets a reference to the conversation/channel.
         /// </summary>

@@ -3,7 +3,7 @@ using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Slack.Models.Emojis;
 
 namespace Skybrud.Social.Slack.Models.Pins {
-    
+
     /// <summary>
     /// Class representing a list of pinned items.
     /// </summary>

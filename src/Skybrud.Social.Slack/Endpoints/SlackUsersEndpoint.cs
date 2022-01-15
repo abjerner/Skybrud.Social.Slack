@@ -83,7 +83,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         /// </summary>
         /// <param name="user">The user.</param>
         /// <returns>An instance of <see cref="SlackUserPresenceResponse"/> representing the response.</returns>
-        public SlackUserPresenceResponse GetPresence(string user)  {
+        public SlackUserPresenceResponse GetPresence(string user) {
             return new SlackUserPresenceResponse(Raw.GetPresence(user));
         }
 

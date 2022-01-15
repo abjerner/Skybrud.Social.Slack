@@ -4,7 +4,7 @@ using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Social.Slack.Options.Conversations {
-    
+
     /// <summary>
     /// Class representing the options for getting a list of conversations.
     /// </summary>
@@ -26,7 +26,7 @@ namespace Skybrud.Social.Slack.Options.Conversations {
         /// Gets whether to exclude archived channels from the list. Default is <c>false</c>.
         /// </summary>
         public bool ExcludeArchived { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the maximum number of items to return. Fewer than the requested number of items may be
         /// returned, even if the end of the users list hasn't been reached. Providing no limit value will result
@@ -56,7 +56,7 @@ namespace Skybrud.Social.Slack.Options.Conversations {
         public SlackGetConversationListOptions() {
             Types = new List<SlackConversationType>();
         }
-        
+
         /// <summary>
         /// Initializes a new instance with based on the specified <paramref name="cursor"/>. and <paramref name="limit"/>.
         /// </summary>

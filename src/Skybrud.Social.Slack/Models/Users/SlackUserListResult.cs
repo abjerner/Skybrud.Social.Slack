@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.Slack.Models.Users {
-    
+
     /// <summary>
     /// Class representing a list of Slack users (members of a Slack team).
     /// </summary>

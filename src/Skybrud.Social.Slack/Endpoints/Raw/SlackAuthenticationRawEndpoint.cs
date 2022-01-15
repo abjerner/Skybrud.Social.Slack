@@ -2,7 +2,7 @@
 using Skybrud.Social.Slack.OAuth;
 
 namespace Skybrud.Social.Slack.Endpoints.Raw {
-    
+
     /// <summary>
     /// Raw implementation of the authentication endpoint.
     /// </summary>

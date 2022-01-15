@@ -4,7 +4,7 @@ using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Social.Slack.Options.Pins {
-    
+
     /// <summary>
     /// Options for getting a list of pins in a Slack channel.
     /// </summary>
@@ -12,7 +12,7 @@ namespace Skybrud.Social.Slack.Options.Pins {
     ///     <cref>https://api.slack.com/methods/pins.list</cref>
     /// </see>
     public class SlackGetPinListOptions : IHttpRequestOptions {
-        
+
         #region Properties
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Skybrud.Social.Slack.Options.Pins {
         /// <inheritdoc />
         public IHttpRequest GetRequest() {
             if (string.IsNullOrWhiteSpace(Channel)) throw new PropertyNotSetException(nameof(Channel));
-            return HttpRequest.Get("/api/pins.list", new HttpQueryString {{"channel", Channel}});
+            return HttpRequest.Get("/api/pins.list", new HttpQueryString { { "channel", Channel } });
         }
 
         #endregion

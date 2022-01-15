@@ -3,7 +3,7 @@ using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
 
 namespace Skybrud.Social.Slack.Models.Conversations {
-    
+
     /// <summary>
     /// Class representing a Slack conversation.
     /// </summary>
@@ -13,12 +13,12 @@ namespace Skybrud.Social.Slack.Models.Conversations {
     public class SlackConversation : SlackObject {
 
         #region Properties
-        
+
         /// <summary>
         /// Gets the unique ID of the conversation.
         /// </summary>
         public string Id { get; }
-        
+
         /// <summary>
         /// Gets the name of the conversation.
         /// </summary>
@@ -28,12 +28,12 @@ namespace Skybrud.Social.Slack.Models.Conversations {
         /// Gets whether the conversation is a channel.
         /// </summary>
         public bool IsChannel { get; }
-        
+
         /// <summary>
         /// Gets whether the conversation is a group.
         /// </summary>
         public bool IsGroup { get; }
-        
+
         /// <summary>
         /// Gets whether the conversation is a an IM.
         /// </summary>
@@ -123,7 +123,7 @@ namespace Skybrud.Social.Slack.Models.Conversations {
         /// Gets or sets the priority of the conversations. This property is only returned for IM conversations.
         /// </summary>
         public double Priority { get; }
-        
+
         #endregion
 
         #region Constructors

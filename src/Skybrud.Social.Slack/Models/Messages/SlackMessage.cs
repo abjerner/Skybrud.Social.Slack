@@ -3,14 +3,14 @@ using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
 
 namespace Skybrud.Social.Slack.Models.Messages {
-    
+
     /// <summary>
     /// Class representing a Slack message.
     /// </summary>
     public class SlackMessage : SlackObject {
 
         #region Properties
-        
+
         /// <summary>
         /// Gets the main text of the message.
         /// </summary>

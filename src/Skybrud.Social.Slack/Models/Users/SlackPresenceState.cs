@@ -1,5 +1,5 @@
 ﻿namespace Skybrud.Social.Slack.Models.Users {
-    
+
     /// <summary>
     /// Enum class representing the presence status of a <see cref="SlackUser"/>.
     /// </summary>

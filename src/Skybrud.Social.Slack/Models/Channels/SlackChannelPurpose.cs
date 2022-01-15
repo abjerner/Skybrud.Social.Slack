@@ -3,7 +3,7 @@ using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
 
 namespace Skybrud.Social.Slack.Models.Channels {
-    
+
     /// <summary>
     /// Class representing the purpose a Slack channel.
     /// </summary>

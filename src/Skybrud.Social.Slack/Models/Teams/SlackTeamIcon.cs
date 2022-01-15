@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.Slack.Models.Teams {
-    
+
     /// <summary>
     /// Class representing icon details of a Slack team.
     /// </summary>

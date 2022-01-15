@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.Slack.Models {
-    
+
     /// <summary>
     /// Class representing the meta data of a list response.
     /// </summary>

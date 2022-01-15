@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.Slack.Models {
-    
+
     /// <summary>
     /// Class representing a generic response body received from the Slack API.
     /// </summary>

@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.Slack.Models.Authentication {
-    
+
     /// <summary>
     /// Class with brief information about the authed user.
     /// </summary>

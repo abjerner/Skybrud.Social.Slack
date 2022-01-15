@@ -4,7 +4,7 @@ using Skybrud.Social.Slack.OAuth;
 using Skybrud.Social.Slack.Options.Conversations;
 
 namespace Skybrud.Social.Slack.Endpoints.Raw {
-    
+
     /// <summary>
     /// Raw implementation of the <strong>Conversions</strong> endpoint.
     /// </summary>
@@ -54,7 +54,7 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         ///     <cref>https://api.slack.com/methods/conversations.info</cref>
         /// </see>
         public IHttpResponse GetInfo(SlackGetConversationOptions options) {
-            if (options== null) throw new ArgumentNullException(nameof(options));
+            if (options == null) throw new ArgumentNullException(nameof(options));
             return Client.GetResponse(options);
 
         }
@@ -69,7 +69,7 @@ namespace Skybrud.Social.Slack.Endpoints.Raw {
         public IHttpResponse GetList() {
             return Client.GetResponse(new SlackGetConversationListOptions());
         }
-        
+
         /// <summary>
         /// Returns a list of public channels.
         /// </summary>

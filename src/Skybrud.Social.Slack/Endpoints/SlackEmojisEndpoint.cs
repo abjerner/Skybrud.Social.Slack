@@ -2,7 +2,7 @@
 using Skybrud.Social.Slack.Responses.Emojis;
 
 namespace Skybrud.Social.Slack.Endpoints {
-    
+
     /// <summary>
     /// Implementation of the <strong>Emojis</strong> endpoint.
     /// </summary>

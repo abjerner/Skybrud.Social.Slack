@@ -3,7 +3,7 @@ using Skybrud.Social.Slack.Options.Conversations;
 using Skybrud.Social.Slack.Responses.Conversations;
 
 namespace Skybrud.Social.Slack.Endpoints {
-    
+
     /// <summary>
     /// Implementation of the <strong>Conversions</strong> endpoint.
     /// </summary>
@@ -60,7 +60,7 @@ namespace Skybrud.Social.Slack.Endpoints {
             return new SlackConversationResponse(Raw.GetInfo(options));
 
         }
-        
+
         /// <summary>
         /// Returns a list of public channels.
         /// </summary>
@@ -71,7 +71,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         public SlackConversationListResponse GetList() {
             return new SlackConversationListResponse(Raw.GetList());
         }
-        
+
         /// <summary>
         /// Returns a list of public channels.
         /// </summary>
@@ -84,7 +84,7 @@ namespace Skybrud.Social.Slack.Endpoints {
         public SlackConversationListResponse GetList(string cursor, int limit) {
             return new SlackConversationListResponse(Raw.GetList(cursor, limit));
         }
-        
+
         /// <summary>
         /// Returns a list of conversations matching the specified <paramref name="options"/>.
         /// </summary>

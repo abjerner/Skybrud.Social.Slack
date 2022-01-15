@@ -28,7 +28,7 @@ namespace Skybrud.Social.Slack.Models {
         /// </summary>
         /// <param name="value">The string value to convert.</param>
         /// <returns>An instance of <see cref="SlackBoolean"/>.</returns>
-        protected SlackBoolean ParseBoolean(string value)  {
+        protected SlackBoolean ParseBoolean(string value) {
 
             if (StringUtils.TryParseBoolean(value, out bool result)) {
                 return result ? SlackBoolean.True : SlackBoolean.False;
@@ -45,7 +45,7 @@ namespace Skybrud.Social.Slack.Models {
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public EssentialsTime ParseUnixTimestamp(long value) {
             return value < 1 ? null : EssentialsTime.FromUnixTimestamp(value);
-        } 
+        }
 
         #endregion
 

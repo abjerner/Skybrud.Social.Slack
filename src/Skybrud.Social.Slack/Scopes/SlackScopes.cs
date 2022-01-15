@@ -133,7 +133,7 @@ namespace Skybrud.Social.Slack.Scopes {
         /// Scopes related to the <strong>Channels</strong> endpoint.
         /// </summary>
         public static class Channels {
-            
+
             /// <summary>
             /// This scope lets an app "View messages and other content in public channels that your slack app has been added to".
             /// </summary>
@@ -175,7 +175,7 @@ namespace Skybrud.Social.Slack.Scopes {
             public static readonly SlackScope Write = new SlackScope("channels:write", "Write", "This scope lets an app \"Manage the user’s public channels and create new ones on the user’s behalf\".");
 
         }
-        
+
         /// <summary>
         /// Scopes related to the <strong>Chat</strong> endpoint.
         /// </summary>

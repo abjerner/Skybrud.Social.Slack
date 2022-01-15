@@ -3,7 +3,7 @@ using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
 
 namespace Skybrud.Social.Slack.Models.Pins {
-    
+
     /// <summary>
     /// Class representing a pinned item.
     /// </summary>

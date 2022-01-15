@@ -4,7 +4,7 @@ using Skybrud.Essentials.Time;
 using Skybrud.Social.Slack.Models.Common;
 
 namespace Skybrud.Social.Slack.Models.Users {
-   
+
     /// <summary>
     /// Class representing the presence of a user.
     /// </summary>
@@ -50,7 +50,7 @@ namespace Skybrud.Social.Slack.Models.Users {
         /// Initializes a new instance based on the specified <paramref name="json"/> object.
         /// </summary>
         /// <param name="json">An instance of <see cref="JObject"/> representing the object.</param>
-        protected SlackPresence(JObject json) : base(json)  {
+        protected SlackPresence(JObject json) : base(json) {
             Presence = json.GetEnum("presence", SlackPresenceState.Unspecified);
             IsOnline = json.GetString("online", ParseBoolean);
             IsAutoAway = json.GetString("auto_away", ParseBoolean);

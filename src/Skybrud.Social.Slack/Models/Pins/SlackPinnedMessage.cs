@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 
 namespace Skybrud.Social.Slack.Models.Pins {
-    
+
     /// <summary>
     /// Class representing a pinned item.
     /// </summary>
@@ -11,7 +11,7 @@ namespace Skybrud.Social.Slack.Models.Pins {
     public class SlackPinnedMessage : SlackObject {
 
         #region Properties
-        
+
         #endregion
 
         #region Constructors

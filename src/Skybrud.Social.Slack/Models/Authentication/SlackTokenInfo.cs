@@ -3,14 +3,14 @@ using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Slack.Scopes;
 
 namespace Skybrud.Social.Slack.Models.Authentication {
-    
+
     /// <summary>
     /// Class representing the response body of a call to get an access token.
     /// </summary>
     public class SlackTokenInfo : SlackObject {
 
         #region Properties
-        
+
         /// <summary>
         /// Gets the access token.
         /// </summary>

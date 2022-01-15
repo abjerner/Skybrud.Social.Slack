@@ -1,5 +1,5 @@
 ﻿namespace Skybrud.Social.Slack.Models.Pins {
-    
+
     /// <summary>
     /// Enum class indicating the type of a pinned item.
     /// </summary>

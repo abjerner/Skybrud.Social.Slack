@@ -2,7 +2,7 @@
 using System.Linq;
 
 namespace Skybrud.Social.Slack.Scopes {
-    
+
     /// <summary>
     /// Class representing a list of scopes of the Slack API.
     /// </summary>
